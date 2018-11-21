@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="row" >
+        <div class= "col-sm-4">
+            <h1> Profile </h1> 
+
+            <div class="card border-dark mb-3" style="width: 20rem;">
+                <div class="card-body">
+                    <h5 class="card-title"><%= " #{@user.full_name} "%></h5>
+                    <h5 class="card-title">Email: <%= @user.email %></h5>
+                    <h5 class="card-title">Gender: <%= @user.gender %></h5>
+                    <h5 class="card-title">IC: <%= @user.ic_number %></h5>
+                    <h5 class="card-title">Driving license: <%= @user.driving_license %></h5>
+                    <h5 class="card-title">Number plate: <%= @user.number_plate %></h5>
+
+                    <% if @user.id = current_user.id %>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Edit detail
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">User Details</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <%= form_with model: @user do |form| %>
+                                            <div class= "form-group row">
+                                                <div class="form-group col-md-8">
+                                                    <%= form.label :full_name %>
+                                                    <%= form.text_field :full_name, class: 'form-control' %>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <%= form.label :gender %>
+                                                    <%= form.select 'gender', options_for_select(['(select one)', 'Male', 'Female'], '1'), { prompt: true }, required: true, class: 'form-control' %>
+                                                </div>
+                                            </div>
+                                            <div class= "form-group row">
+                                                <div class="form-group col-md-4">
+                                                    <%= form.label :ic_number %>
+                                                    <%= form.text_field :ic_number, class: 'form-control' %>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <%= form.label :driving_license %>
+                                                    <%= form.text_field :driving_license, class: 'form-control' %>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <%= form.label :number_plate %>
+                                                    <%= form.text_field :number_plate, class: 'form-control' %>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        <% end %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
