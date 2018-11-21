@@ -8,6 +8,7 @@ class OfficersController < ApplicationController
     end
 
     def create
+        redirect_to new_officer_registration_path
     end
     # Officer Profile Page
     def show
