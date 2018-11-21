@@ -1,21 +1,34 @@
 <div class="container">
-	<h1>Complaint</h1>
+	<h1>Complaint <%=@complaint.id%></h1>
 </div>
 
 <div class="container">
-	<h3>Complain History</h3>
+	<table style="width:100%">
+		<tr>
+			<td>Location: </td>
+			<td><%=@complaint.latitude%>,<%=@complaint.longitude%></td>
+	
+		</tr>
+		<tr>
+			<td>Number Plate: </td>
+			<td><%=@complaint.number_plate%></td>
+		</tr>
+		<tr>
+			<td>Offence:</td>
+			<td><%=@complaint.offence%></td>
+		</tr>		
+		<tr>
+			<td>Comment:</td>
+			<td><%=@complaint.comment%></td>
+		</tr>
 
-	<div>
-	<hr/>
-	<%subject= @test.find(9)%>
-	TEST LOCATION COORDINATE:<br/><%=subject.longitude%> , <%=subject.lattitude%><br/>
-	<hr/>
-	TEST COMMENT:<br/><%=subject.comment%><br/>
-	<hr/>
-	IMAGE<br/>
-	<%=image_tag subject.avatar.url, height: '100' if subject.avatar? %>
-	</div>
-
-
-
+		<tr>
+			<td>Image Proof:</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><%=image_tag @complaint.avatar.url%></td>
+		</tr>
+		</table>
+	
 </div>

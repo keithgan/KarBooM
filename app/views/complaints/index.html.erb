@@ -1,16 +1,17 @@
 <div class="container">
 	<h1>Complaint History</h1>
-	<table style="width:100%">
+	<hr/>
 		<%@complaints.each_with_index do |c,i|%>
-
+		<table style="width:100%">
 		<tr>
 			<td>Location: </td>
-			<td><%=c.latitude%><%=c.longitude%></td>
-			<td><%=link_to 'View', %></td>
+			<td><%=c.latitude%>,<%=c.longitude%></td>
+			<td><%=link_to 'View', complaints_path(c) %></td>
 		</tr>
 		<tr>
 			<td>Number Plate: </td>
 			<td><%=c.number_plate%></td>
+			<td><%=c.id%></td>
 		</tr>
 		<tr>
 			<td>Offence:</td>
@@ -28,8 +29,8 @@
 			<td></td>
 			<td><%=image_tag c.avatar.url%></td>
 		</tr>
+		</table>
 		<hr/>
 		<%end%>
-	</table>
 	
 </div>

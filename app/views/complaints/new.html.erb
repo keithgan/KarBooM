@@ -9,6 +9,14 @@ Submit button triggers getLocation and gets info from form, and sends it tgt to 
             <td><%=file_field(:avatar, accept:'image/*', id:"file-input")%></td>
         </tr>
         <tr>
+            <td>Number Plate</td>
+            <td><input type="text" id="number_plate"></td>
+        </tr>
+        <tr>
+            <td>Offence</td>
+            <td><input type="text" id="offence"></td>
+        </tr>
+        <tr>
             <td>Comment</td>
             <td><input type="text" id="comment"></td>
         </tr>
@@ -30,7 +38,8 @@ Submit button triggers getLocation and gets info from form, and sends it tgt to 
 var x = document.getElementById("demo");
 var input = document.querySelector('input[type=file]'); // see Example 4
 var comment = document.getElementById("comment")
-
+var number_plate = document.getElementById("number_plate")
+var offence = document.getElementById("offence")
 // prompt user for permission as page loads
 function getLocation() {
     if (navigator.geolocation) {
@@ -62,8 +71,11 @@ function showPosition(position) {
 		form.append('longitude',position.coords.longitude)
 		form.append('latitude',position.coords.latitude)
 		form.append('comment',comment.value)
+        form.append('number_plate',number_plate.value)
+        form.append('offence',offence.value)
 		xhr.open('post', 'create', true);
-		xhr.send(form)	
+		xhr.send(form)
+	
 }
 
 // taking care of errors

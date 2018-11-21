@@ -11,12 +11,11 @@ class ComplaintsController < ApplicationController
 	end
 
 	def show
-
+		@complaint = Complaint.find_by(id:params[:format])
 	end
 
 	def create
-
-		complaint= Complaint.new(get_params)
+		complaint= current_user.complaints.new(get_params)
 		if complaint.save
 			redirect_to root_path
 		else
@@ -28,6 +27,6 @@ class ComplaintsController < ApplicationController
 private
 
 def get_params
-	params.permit(:latitude,:longitude,:img,:comment,:avatar)
+	params.permit(:latitude,:longitude,:img,:comment,:avatar,:number_plate,:offence)
 end
 end
