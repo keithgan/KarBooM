@@ -1,0 +1,9 @@
+<h1>Officer List</h1>
+
+<% @officers.each do |list|%>
+    <ul>
+        <li><%= link_to "#{list.full_name}", officer_path(list.id) %></li>
+    </ul>
+<% end %>
+
+<%= paginate @officers %>
