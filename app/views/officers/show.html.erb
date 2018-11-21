@@ -1,0 +1,53 @@
+<div id="side_profile">
+    <div id="avatar_profile"></div>
+    <p class="officer_profile_info">Name: @officer.full_name</p>
+    <p class="officer_profile_info">Locality: @officer.officer_locality</p>
+</div>
+
+<div id="officer_option_tabs">
+    <div id="view_all">View All</div>
+    <div id="option_tabs">
+        <div>Complaints</div>
+        <div>Appeals</div>
+        <div>Fines</div>
+    </div>
+</div>
+
+<div id="officer_task_list">
+    <div class="task_column">
+        <h3>Index</h3>
+        @complaint.id
+    </div>
+    <div class="task_column">
+        <h3>Car No. Plate</h3>
+        @complaint.car_no_plate
+    </div>
+    <div class="task_column">
+        <h3>Offence</h3>
+        @complaint.offence
+    </div>
+    <div class="task_column">
+        <h3>Offence No.</h3>
+        @complaint.offence_no
+    </div>
+    <div class="task_column">
+        <h3>Reporting User</h3>
+        @complaint.user_id
+    </div>
+    <div class="task_column">
+        <h3>Complaint Status</h3>
+        @complaint.status
+    </div>
+</div>
+
+<div class="complaint_card">
+    <div>ID#</div>
+    <div>@complaint.avatar</div>
+    <div>Car No. Plate</div>
+    <div>Offence</div>
+    <div>Offence#</div>
+    <div>@complaint.comment</div>
+    <div>@complaint.user_id</div>
+    <div>Approve</div><div>Reject</div>
+</div>
+
