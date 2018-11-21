@@ -3,22 +3,26 @@ class ComplaintsController < ApplicationController
 
 
 	def index
-		@complaint=Complaint.all
+		@complaints=Complaint.all
 	end
 
 	def new
-	@complaint= Complaint.new
+		@complaint= Complaint.new
+	end
+
+	def show
+
 	end
 
 	def create
-	 #PARAMS ARE RIGHT. JUST GET IT TO DISPLAY RIGHT 
-		byebug
+
 		complaint= Complaint.new(get_params)
 		if complaint.save
 			redirect_to root_path
 		else
 			render 'new'
 		end
+	
 	end
 
 private

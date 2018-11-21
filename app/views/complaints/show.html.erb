@@ -1,0 +1,21 @@
+<div class="container">
+	<h1>Complaint</h1>
+</div>
+
+<div class="container">
+	<h3>Complain History</h3>
+
+	<div>
+	<hr/>
+	<%subject= @test.find(9)%>
+	TEST LOCATION COORDINATE:<br/><%=subject.longitude%> , <%=subject.lattitude%><br/>
+	<hr/>
+	TEST COMMENT:<br/><%=subject.comment%><br/>
+	<hr/>
+	IMAGE<br/>
+	<%=image_tag subject.avatar.url, height: '100' if subject.avatar? %>
+	</div>
+
+
+
+</div>

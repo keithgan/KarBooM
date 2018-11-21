@@ -1,8 +1,8 @@
-<h1>Upload a picture here:)</h1>
+<h1>File Complain</h1>
 
 <!-- Fill up the form. 
 Submit button triggers getLocation and gets info from form, and sends it tgt to controller thru JS request -->
-<div>
+<div class ="container">
     <table>
         <tr>
             <td>Take a Picture</td>
@@ -15,16 +15,18 @@ Submit button triggers getLocation and gets info from form, and sends it tgt to 
         <tr>
             <td><button type="button" onclick="getLocation()">Submit</button></td>
         </tr>
-	
     </table>
 </div>
 
 <hr/>
 
 <!-- LOCATION FINDER -->
-<h4 id="demo"></h4>
+<div class="container">
+    <h5 id="demo"></h5>  
+</div>
 
 <script>
+
 var x = document.getElementById("demo");
 var input = document.querySelector('input[type=file]'); // see Example 4
 var comment = document.getElementById("comment")
@@ -43,11 +45,17 @@ function showPosition(position) {
     x.innerHTML = "Latitude: " + position.coords.latitude + 
     "<br>Longitude: " + position.coords.longitude;
 
-  var file = input.files[0];
-
+        var file = input.files[0];
 
 		var form = new FormData()
 		xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log("crap")
+            window.location = "/";
+         }
+         }
 
 		form.append('avatar', file);
 		form.append('longitude',position.coords.longitude)
@@ -55,6 +63,10 @@ function showPosition(position) {
 		form.append('comment',comment.value)
 		xhr.open('post', 'create', true);
 		xhr.send(form)
+
+
+
+
 	
 }
 
