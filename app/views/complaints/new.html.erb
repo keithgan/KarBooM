@@ -54,6 +54,7 @@ function showPosition(position) {
         if (this.readyState == 4 && this.status == 200) {
             console.log("crap")
             window.location = "/";
+            alert("Complaint Successfully Created!: )")
          }
          }
 
@@ -62,12 +63,7 @@ function showPosition(position) {
 		form.append('latitude',position.coords.latitude)
 		form.append('comment',comment.value)
 		xhr.open('post', 'create', true);
-		xhr.send(form)
-
-
-
-
-	
+		xhr.send(form)	
 }
 
 // taking care of errors
