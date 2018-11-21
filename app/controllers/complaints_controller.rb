@@ -3,18 +3,18 @@ class ComplaintsController < ApplicationController
 
 
 	def index
-		@test= Test.all
+		@complaint=Complaint.all
 	end
 
 	def new
-	@test= Test.new
+	@complaint= Complaint.new
 	end
 
 	def create
 	 #PARAMS ARE RIGHT. JUST GET IT TO DISPLAY RIGHT 
 		byebug
-		test= Test.new(get_params)
-		if test.save
+		complaint= Complaint.new(get_params)
+		if complaint.save
 			redirect_to root_path
 		else
 			render 'new'
@@ -24,6 +24,6 @@ class ComplaintsController < ApplicationController
 private
 
 def get_params
-	params.permit(:lattitude,:longitude,:img,:comment,:avatar)
+	params.permit(:latitude,:longitude,:img,:comment,:avatar)
 end
 end

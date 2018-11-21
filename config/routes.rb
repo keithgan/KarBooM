@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   }
   
   resources :users
+  resource :complaints
+	post '/complaints/create', to: 'complaints#create'
+
 end
