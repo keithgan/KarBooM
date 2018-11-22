@@ -1,0 +1,2 @@
+class OfficerWelcomeController < ApplicationController
+end

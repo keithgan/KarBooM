@@ -1,8 +1,8 @@
-class User < ApplicationRecord
+class Officer < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-  has_many :complaints
+  paginates_per 50
+  enum role: { officer: 0, superadmin: 1}
 end

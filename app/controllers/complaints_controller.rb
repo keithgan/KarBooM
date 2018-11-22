@@ -44,7 +44,6 @@ class ComplaintsController < ApplicationController
 
 		complaint.update(offence:offence)
 		complaint.update(fine:fine)
-		byebug
 		if complaint.save
 			redirect_to root_path
 		else

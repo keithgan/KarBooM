@@ -1,0 +1,230 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <div id="side_profile">
+                <div id="avatar_profile"></div>
+                <p class="officer_profile_info">Name: @officer.full_name</p>
+                <p class="officer_profile_info">Locality: @officer.officer_locality</p>
+            </div>
+        </div>
+        <div class="col-9">
+            <div id="officer_option_tabs">
+                <div class="justify-content-center" id="view_all">
+                    <div class="container text-center">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">View All</button>
+                    </div>
+                    <div id="option_tabs">
+                        <div class="row">
+                            <div class="col-4">Complaints</div>
+                            <div class="col-4">Appeals</div>
+                            <div class="col-4">Fines</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-info">
+            <th scope="col">#</th>
+            <th scope="col">Car No. Plate</th>
+            <th scope="col">Offence</th>
+            <th scope="col">Submitted By</th>
+            <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @complaints.each do |list| %>
+                <tr>
+                <th scope="row"><%= list.id %></th>
+                <td><%= list.number_plate %></td>
+                <td><%= list.offence %></td>
+                <td><%= list.user_id %></td>
+                <td>Status</td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
+
+    <div class="row" id="officer_task_list">
+        <div class="col-1 task_column">
+            <h3>Index</h3>
+            @complaint.id
+        </div>
+        <div class="col-2 task_column">
+            <h3>Car No. Plate</h3>
+             @complaint.number_plate
+        </div>
+        <div class="col-4 task_column">
+            <h3>Offence</h3>
+             @complaint.offence
+        </div>
+        <div class="col-3 task_column">
+            <h3>Reporting User</h3>
+            @complaint.user_id
+        </div>
+        <div class="col-2 task_column">
+            <h3>Complaint Status</h3>
+            @complaint.status
+        </div>
+    </div>
+
+
+
+
+<div class="complaint_card">
+    <div>ID#</div>
+    <div>@complaint.avatar</div>
+    <div>Car No. Plate</div>
+    <div>Offence</div>
+    <div>Offence#</div>
+    <div>@complaint.comment</div>
+    <div>@complaint.user_id</div>
+    <div>Approve</div><div>Reject</div>
+</div>
+
+<html>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Normalize CSS -->
+	    <link rel="stylesheet" href="normalize.css"/>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <!--Additional CSS-->
+        <style>
+            .modal.and.carousel.and.card {
+                position: fixed; /*Needed because the carousel overrides the position property.*/
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container text-center">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            View All
+            </button>
+      
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+
+                                    <div class="card">
+                                        <div class="card-header">
+                                            ID# @complaint.id 
+                                        </div>
+                                        <img class="card-img-top img-fluid" src="Gambar1.jpg"/>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card One</h5>
+                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            <a href="#" class="btn btn-primary">Approve</a>
+                                            <a href="#" class="btn btn-primary">Reject</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                                <div class="carousel-item">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            ID# @complaint.id
+                                        </div>
+                                        <img class="card-img-top height: 0.1rem" src="Gambar2.jpg" alt="Card image cap"/>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card Two</h5>
+                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            ID# @complaint.id
+                                        </div>
+                                        <img class="card-img-top" src="Gambar3.jpg" alt="Card image cap"/>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card Three</h5>
+                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            <a href="#" class="btn btn-primary">Approve</a>
+                                            <a href="#" class="btn btn-primary">Reject</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                        <!-- <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                        ...
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    </body>
+</html>
+
+<script>
+$("#city-search").on("keyup", function(){
+  autocomplete()
+});
+
+function autocomplete(){
+  $.ajax({
+    url: '/search',
+    type: 'POST',
+    // data: $("#city-seasrch").serialize(), //takes the form data and authenticity toke and converts it into a standard URL
+    dataType: 'json', //specify what type of data you're expecting back from the servers
+    error: function() {
+        console.log("Something went wrong");
+    },
+    success: function(data) {
+      console.log(data)
+      $("#list").html("");
+
+      data.forEach(function(element) {
+        var option = document.createElement("option");
+        option.value = element;
+
+        //append option to list
+        $("#list").append(option);
+      });
+    }
+  });
+}
+</script>
