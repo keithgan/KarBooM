@@ -10,8 +10,12 @@ class UsersController < ApplicationController
 
     def update
         @user = User.find(params[:id])
-        @user.update(user_params)
-        redirect_to @user 
+        
+        if @user.update(user_params)
+            redirect_to @user
+        else
+            render 'edit'
+        end
     end
 
     def user_params
@@ -24,7 +28,6 @@ class UsersController < ApplicationController
           :email, 
           :password,
           :password_confirmation,
-          :current_password
           )
       end
 end

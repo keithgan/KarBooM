@@ -17,7 +17,11 @@ Rails.application.routes.draw do
   }
   
   resources :users
+
+  get "/users/:id/edit" => "users/registrations#edit", controller: "users/registrations", as: "edit_user_details"
+
   resource :complaints
+  
 	post '/complaints/create', to: 'complaints#create'
   get "/complaints/index", to: 'complaints#index'
 
