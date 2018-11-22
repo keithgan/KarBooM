@@ -50,9 +50,12 @@ class ComplaintsController < ApplicationController
 			address_object = Geocoder.search([get_params[:latitude],get_params[:longitude]])
 			address = address_object.first.address
 			postal_code=address_object.first.postal_code
+			# Assign into complaint object
+			complaint.update(address:address)
+			complaint.update(postal_code:postal_code)
 		end
+
 		
-		byebug
 		if complaint.save
 			redirect_to root_path
 		else

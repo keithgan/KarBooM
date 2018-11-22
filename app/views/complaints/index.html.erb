@@ -4,9 +4,13 @@
 		<%@complaints.each_with_index do |c,i|%>
 		<table style="width:100%">
 		<tr>
-			<td>Location: </td>
+			<td>Coordinates: </td>
 			<td><%=c.latitude%>,<%=c.longitude%></td>
 			<td><%=link_to 'View', complaints_path(c) %></td>
+		</tr>
+		<tr>
+			<td>Address:</td>
+			<td><%=c.address%></td>
 		</tr>
 		<tr>
 			<td>Number Plate: </td>
