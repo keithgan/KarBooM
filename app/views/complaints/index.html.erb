@@ -16,18 +16,21 @@
 		<tr>
 			<td>Offence:</td>
 			<td><%=c.offence%></td>
+		</tr>
+		<tr>
+			<td>Fine:</td>
+			<td>RM <%=c.fine%></td>
 		</tr>		
 		<tr>
 			<td>Comment:</td>
 			<td><%=c.comment%></td>
 		</tr>
-
 		<tr>
 			<td>Image Proof:</td>
 		</tr>
 		<tr>
 			<td></td>
-			<td><%=image_tag c.avatar.url%></td>
+			<td><%=image_tag c.avatar.url,  width: "500"%></td>
 		</tr>
 		</table>
 		<hr/>

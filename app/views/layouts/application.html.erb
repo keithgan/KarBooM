@@ -78,6 +78,13 @@
   
   <div class="container mt-2 mb-5">
     <%= yield %>
+
+    <%= link_to t(".sign_up"), new_user_registration_path %><br/>
+    <%= link_to t(".sign_in"), new_user_session_path %>   
+    <hr/>
+    <%= link_to t(".home"), welcome_index_path %><br/>
+    <%= link_to t(".make_complaint"), new_complaints_path %><br/>
+    <%= link_to t(".complaint_history"), complaints_index_path %><br/>
   </div>
   </body>
 </html>
