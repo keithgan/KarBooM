@@ -4,21 +4,24 @@ class ComplaintsController < ApplicationController
 
 	def index
 		@complaints=Complaint.all
+		@users=User.all
 	end
 
 	def new
+		@users= User.all
 		@complaint= Complaint.new
 	end
 
 	def show
 		@complaint = Complaint.find_by(id:params[:format])
+		@users=User.all
 
 	end
 
 	def create
-	
+		
 		complaint= current_user.complaints.new(get_params)
-
+		# Checks offence and assign fine
 		if (get_params[:offence] == "1") 
 		    offence = "Double Parking with no passenger inside the car"
 		    fine = 100
@@ -44,6 +47,23 @@ class ComplaintsController < ApplicationController
 
 		complaint.update(offence:offence)
 		complaint.update(fine:fine)
+
+		# Get location and assign address
+		if Geocoder.search([get_params[:latitude],get_params[:longitude]]) !=nil
+			address_object = Geocoder.search([get_params[:latitude],get_params[:longitude]])
+			address = address_object.first.address
+			postal_code=address_object.first.postal_code
+			# Assign into complaint object
+			complaint.update(address:address)
+			complaint.update(postal_code:postal_code)
+		end
+		byebug
+
+		# Find offender thru number plate
+		offender= User.find_by(number_plate:get_params[:number_plate])
+		# Assign offender user_id to offender_id
+		complaint.update(offender_id:offender.id)
+		
 		if complaint.save
 			redirect_to root_path
 		else
