@@ -7,6 +7,7 @@ class ComplaintsController < ApplicationController
 	end
 
 	def new
+		@users= User.all
 		@complaint= Complaint.new
 	end
 
@@ -16,7 +17,7 @@ class ComplaintsController < ApplicationController
 	end
 
 	def create
-	
+		
 		complaint= current_user.complaints.new(get_params)
 		# Checks offence and assign fine
 		if (get_params[:offence] == "1") 
@@ -54,7 +55,11 @@ class ComplaintsController < ApplicationController
 			complaint.update(address:address)
 			complaint.update(postal_code:postal_code)
 		end
+		byebug
 
+		# Find offender thru number plate
+		offender= User.find_by(number_plate:get_params[:number_plate])
+		
 		
 		if complaint.save
 			redirect_to root_path

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_22_122700) do
+ActiveRecord::Schema.define(version: 2018_11_22_152500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(version: 2018_11_22_122700) do
     t.integer "fine"
     t.string "address"
     t.string "postal_code"
+    t.integer "offender_id"
+    t.index ["number_plate"], name: "index_complaints_on_number_plate"
+    t.index ["offender_id"], name: "index_complaints_on_offender_id"
   end
 
   create_table "officers", force: :cascade do |t|

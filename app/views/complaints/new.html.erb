@@ -1,7 +1,18 @@
 <h1>File Complain</h1>
 
+<div>
+    <!-- Find all number plate in the system -->
+    <%number_plate_arr =[]%>
+    <%@users.each do |user|%>
+    <%number_plate_arr.push(user.number_plate)%>
+    <%end%>
+
+    <%number_plate_arr%>
+</div>
+
 <!-- Fill up the form. 
 Submit button triggers getLocation and gets info from form, and sends it tgt to controller thru JS request -->
+
 <div class ="container">
     <table>
         <tr>
@@ -10,7 +21,14 @@ Submit button triggers getLocation and gets info from form, and sends it tgt to 
         </tr>
         <tr>
             <td>Number Plate</td>
-            <td><input type="text" id="number_plate"></td>
+            <td><select name="number_plate" id="number_plate">
+                <!-- This should be a autocomplete search input in the future -->
+                 <option selected>Select Number Plate</option>
+                 <%number_plate_arr.each do |numplate|%>
+                    <option value="<%=numplate%>"><%=numplate%></option>
+                <%end%>
+                </select>
+            </td>
         </tr>
         <tr>
             <td>Offence</td>
