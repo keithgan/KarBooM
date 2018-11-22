@@ -4,4 +4,5 @@ class Officer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   paginates_per 50
+  enum role: { officer: 0, superadmin: 1}
 end
