@@ -4,6 +4,7 @@ class ComplaintsController < ApplicationController
 
 	def index
 		@complaints=Complaint.all
+		@users=User.all
 	end
 
 	def new
@@ -13,6 +14,7 @@ class ComplaintsController < ApplicationController
 
 	def show
 		@complaint = Complaint.find_by(id:params[:format])
+		@users=User.all
 
 	end
 
@@ -59,7 +61,8 @@ class ComplaintsController < ApplicationController
 
 		# Find offender thru number plate
 		offender= User.find_by(number_plate:get_params[:number_plate])
-		
+		# Assign offender user_id to offender_id
+		complaint.update(offender_id:offender.id)
 		
 		if complaint.save
 			redirect_to root_path

@@ -9,13 +9,18 @@
 			<td><%=@complaint.user.full_name%> | id: <%=@complaint.user.id%></td>
 		</tr>
 		<tr>
+			<td>Offender:</td>
+			<%offender=@users.find_by(id:@complaint.offender_id)%>
+			<td><%=offender.full_name%> | id: <%=@complaint.offender_id%> </td>
+		</tr>
+		<tr>
 			<td>Coordinates: </td>
 			<td><%=@complaint.latitude%>,<%=@complaint.longitude%></td>
 	
 		</tr>
 		<tr>
 			<td>Address:</td>
-			<td><%=@comaplaint.address%></td>
+			<td><%=@complaint.address%></td>
 		</tr>
 		<tr>
 			<td>Number Plate: </td>
