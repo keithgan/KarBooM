@@ -1,0 +1,42 @@
+<div class="container">
+	<h1>Complaint <%=@complaint.id%></h1>
+</div>
+
+<div class="container">
+	<table style="width:100%">
+		<tr>
+			<td>Complaint filed by:</td>
+			<td><%=@complaint.user.full_name%> | id: <%=@complaint.user.id%></td>
+		</tr>
+		<tr>
+			<td>Location: </td>
+			<td><%=@complaint.latitude%>,<%=@complaint.longitude%></td>
+	
+		</tr>
+		<tr>
+			<td>Number Plate: </td>
+			<td><%=@complaint.number_plate%></td>
+		</tr>
+		<tr>
+			<td>Offence:</td>
+			<td><%=@complaint.offence%></td>
+		</tr>
+		<tr>
+			<td>Fine:</td>
+			<td>RM <%=c.fine%></td>
+		</tr>		
+		<tr>
+			<td>Comment:</td>
+			<td><%=@complaint.comment%></td>
+		</tr>
+
+		<tr>
+			<td>Image Proof:</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><%=image_tag @complaint.avatar.url , width: "500"%></td>
+		</tr>
+		</table>
+	
+</div>

@@ -1,0 +1,110 @@
+<h1>File Complain</h1>
+
+<!-- Fill up the form. 
+Submit button triggers getLocation and gets info from form, and sends it tgt to controller thru JS request -->
+<div class ="container">
+    <table>
+        <tr>
+            <td>Take a Picture</td>
+            <td><%=file_field(:avatar, accept:'image/*', id:"file-input")%></td>
+        </tr>
+        <tr>
+            <td>Number Plate</td>
+            <td><input type="text" id="number_plate"></td>
+        </tr>
+        <tr>
+            <td>Offence</td>
+            <td><select name="offence" id="offence">
+                <option selected>Select Offence</option>
+                <option value="1">Double Parking with no passenger inside the car</option>
+                <option value="2">Not parking entirely inside the box</option>
+                <option value="3">Parking in OKU without valid disabled permit</option>
+                <option value="4">Parking at a bus station or a bus stand</option>
+                <option value="5">Parking on a yellow/white line</option>
+                <option value="6">Parking somewhere which obstructs traffic</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Comment</td>
+            <td><input type="text" id="comment"></td>
+        </tr>
+        <tr>
+            <td><button type="button" onclick="getLocation()">Submit</button></td>
+        </tr>
+    </table>
+</div>
+
+<hr/>
+
+<!-- LOCATION FINDER -->
+<div class="container">
+    <h5 id="demo"></h5>  
+</div>
+
+<script>
+var x = document.getElementById("demo");
+var input = document.querySelector('input[type=file]'); // see Example 4
+var comment = document.getElementById("comment")
+var number_plate = document.getElementById("number_plate")
+var offence = document.getElementById("offence")
+// prompt user for permission as page loads
+
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition,showError);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+// if yes, display current coordinate
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
+
+        var file = input.files[0];
+
+		var form = new FormData()
+		xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log("crap")
+            window.location = "/";
+            alert("Complaint Successfully Created!: )")
+         }
+         }
+
+		form.append('avatar', file);
+		form.append('longitude',position.coords.longitude)
+		form.append('latitude',position.coords.latitude)
+		form.append('comment',comment.value)
+        form.append('number_plate',number_plate.value)
+        form.append('offence',offence.value)
+		xhr.open('post', 'create', true);
+		xhr.send(form)
+	
+}
+
+// taking care of errors
+function showError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            x.innerHTML = "User denied the request for Geolocation."
+            break;
+        case error.POSITION_UNAVAILABLE:
+            x.innerHTML = "Location information is unavailable."
+            break;
+        case error.TIMEOUT:
+            x.innerHTML = "The request to get user location timed out."
+            break;
+        case error.UNKNOWN_ERROR:
+            x.innerHTML = "An unknown error occurred."
+            break;
+    }
+}
+
+</script>
