@@ -21,7 +21,6 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
   </head>
 
   <body>
@@ -31,7 +30,7 @@
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">      
       <ul class="ml-auto navbar-nav smt-lg-0">
-        <% if signed_in? -%>
+        <% if user_signed_in? %>
             <li class="nav-item active">
               <div class="nav-link">
                 <%= link_to t(".home"), welcome_index_path %>
@@ -62,7 +61,30 @@
                 <%= link_to t(".sign_out"), destroy_user_session_path, method: :delete %>
               </div>
             </li>
-        <% else -%>
+        <% elsif officer_signed_in? %>
+          <% if current_officer.superadmin? %>
+            <li class="nav-item active">
+              <div class="nav-link">
+                <%= link_to t(".officer_list"), officers_path %>
+              </div>
+            </li>
+            <li class="nav-item">
+              <div class="nav-link">
+                <%= link_to t(".create_officer"), new_officer_registration_path %>  
+              </div>
+            </li>
+            <li class="nav-item">
+              <div class="nav-link">
+                <%= link_to t(".edit_officer"), edit_officer_registration_path %>  
+              </div>
+            </li>
+          <% end %>
+            <li class="nav-item">
+              <div class="nav-link">
+                <%= link_to t(".sign_out"), destroy_officer_session_path, method: :delete %>
+              </div>
+            </li>
+        <% else %>
             <li class="nav-item">
               <div class="nav-link">
                 <%= link_to t(".sign_up"), new_user_registration_path %>  
@@ -72,11 +94,20 @@
               <div class="nav-link">
                 <%= link_to t(".sign_in"), new_user_session_path %>  
               </div>          
+            </li>
+            <li class="nav-item">
+              <div class="nav-link">
+                <%= link_to t(".officer_sign_in"), new_officer_session_path %>  
+              </div>          
             </li>    
-        <% end -%>
+        <% end %>
       </ul>
     </div>
   </nav>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+                
   
   <div class="container mt-2 mb-5">
     <%= yield %>

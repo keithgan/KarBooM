@@ -12,7 +12,7 @@ class OfficersController < ApplicationController
     end
     # Officer Profile Page
     def show
-
+        @complaints = Complaint.all
     end
     # Officer Request for Change from Super Admin Page
     def edit

@@ -1,44 +1,82 @@
-<div id="side_profile">
-    <div id="avatar_profile"></div>
-    <p class="officer_profile_info">Name: @officer.full_name</p>
-    <p class="officer_profile_info">Locality: @officer.officer_locality</p>
-</div>
-
-<div id="officer_option_tabs">
-    <div id="view_all">View All</div>
-    <div id="option_tabs">
-        <div>Complaints</div>
-        <div>Appeals</div>
-        <div>Fines</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <div id="side_profile">
+                <div id="avatar_profile"></div>
+                <p class="officer_profile_info">Name: @officer.full_name</p>
+                <p class="officer_profile_info">Locality: @officer.officer_locality</p>
+            </div>
+        </div>
+        <div class="col-9">
+            <div id="officer_option_tabs">
+                <div class="justify-content-center" id="view_all">
+                    <div class="container text-center">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">View All</button>
+                    </div>
+                    <div id="option_tabs">
+                        <div class="row">
+                            <div class="col-4">Complaints</div>
+                            <div class="col-4">Appeals</div>
+                            <div class="col-4">Fines</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-<div id="officer_task_list">
-    <div class="task_column">
-        <h3>Index</h3>
-        @complaint.id
-    </div>
-    <div class="task_column">
-        <h3>Car No. Plate</h3>
-        @complaint.car_no_plate
-    </div>
-    <div class="task_column">
-        <h3>Offence</h3>
-        @complaint.offence
-    </div>
-    <div class="task_column">
-        <h3>Offence No.</h3>
-        @complaint.offence_no
-    </div>
-    <div class="task_column">
-        <h3>Reporting User</h3>
-        @complaint.user_id
-    </div>
-    <div class="task_column">
-        <h3>Complaint Status</h3>
-        @complaint.status
-    </div>
+<div class="container-fluid">
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-info">
+            <th scope="col">#</th>
+            <th scope="col">Car No. Plate</th>
+            <th scope="col">Offence</th>
+            <th scope="col">Submitted By</th>
+            <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @complaints.each do |list| %>
+                <tr>
+                <th scope="row"><%= list.id %></th>
+                <td><%= list.number_plate %></td>
+                <td><%= list.offence %></td>
+                <td><%= list.user_id %></td>
+                <td>Status</td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
 </div>
+
+    <div class="row" id="officer_task_list">
+        <div class="col-1 task_column">
+            <h3>Index</h3>
+            @complaint.id
+        </div>
+        <div class="col-2 task_column">
+            <h3>Car No. Plate</h3>
+             @complaint.number_plate
+        </div>
+        <div class="col-4 task_column">
+            <h3>Offence</h3>
+             @complaint.offence
+        </div>
+        <div class="col-3 task_column">
+            <h3>Reporting User</h3>
+            @complaint.user_id
+        </div>
+        <div class="col-2 task_column">
+            <h3>Complaint Status</h3>
+            @complaint.status
+        </div>
+    </div>
+
+
+
 
 <div class="complaint_card">
     <div>ID#</div>
@@ -81,18 +119,22 @@
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
+
                                     <div class="card">
                                         <div class="card-header">
-                                            ID# @complaint.id
+                                            ID# @complaint.id 
                                         </div>
                                         <img class="card-img-top img-fluid" src="Gambar1.jpg"/>
                                         <div class="card-body">
                                             <h5 class="card-title">Card One</h5>
                                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                                            <a href="#" class="btn btn-primary">Approve</a>
+                                            <a href="#" class="btn btn-primary">Reject</a>
                                         </div>
                                     </div>
                                 </div>
+
+                                
                                 <div class="carousel-item">
                                     <div class="card">
                                         <div class="card-header">
@@ -115,7 +157,8 @@
                                         <div class="card-body">
                                             <h5 class="card-title">Card Three</h5>
                                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                                            <a href="#" class="btn btn-primary">Approve</a>
+                                            <a href="#" class="btn btn-primary">Reject</a>
                                         </div>
                                     </div>
                                 </div>
