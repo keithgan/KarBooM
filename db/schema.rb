@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_22_152500) do
+ActiveRecord::Schema.define(version: 2018_11_23_022834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,23 @@ ActiveRecord::Schema.define(version: 2018_11_22_152500) do
     t.integer "offender_id"
     t.index ["number_plate"], name: "index_complaints_on_number_plate"
     t.index ["offender_id"], name: "index_complaints_on_offender_id"
+  end
+
+  create_table "fines", force: :cascade do |t|
+    t.string "date", null: false
+    t.string "time", null: false
+    t.string "location", null: false
+    t.string "offence", null: false
+    t.integer "amount", null: false
+    t.integer "status", default: 0
+    t.bigint "user_id"
+    t.bigint "officer_id"
+    t.bigint "complaint_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["complaint_id"], name: "index_fines_on_complaint_id"
+    t.index ["officer_id"], name: "index_fines_on_officer_id"
+    t.index ["user_id"], name: "index_fines_on_user_id"
   end
 
   create_table "officers", force: :cascade do |t|
@@ -66,4 +83,7 @@ ActiveRecord::Schema.define(version: 2018_11_22_152500) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "fines", "complaints"
+  add_foreign_key "fines", "officers"
+  add_foreign_key "fines", "users"
 end

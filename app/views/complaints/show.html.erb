@@ -6,12 +6,12 @@
 	<table style="width:100%">
 		<tr>
 			<td>Complaint filed by:</td>
-			<td><%=@complaint.user.full_name%> | id: <%=@complaint.user.id%></td>
+			<td><%=@complaint.user.full_name%> | ID: <%=@complaint.user.id%></td>
 		</tr>
 		<tr>
 			<td>Offender:</td>
 			<%offender=@users.find_by(id:@complaint.offender_id)%>
-			<td><%=offender.full_name%> | id: <%=@complaint.offender_id%> </td>
+			<td><%=offender.full_name%> | ID: <%=@complaint.offender_id%> </td>
 		</tr>
 		<tr>
 			<td>Coordinates: </td>
@@ -46,5 +46,15 @@
 			<td><%=image_tag @complaint.avatar.url , width: "500"%></td>
 		</tr>
 		</table>
-	
+</div>
+
+<br/>
+
+<div class="container" style= "text-align:center">
+	<%= form_for [@complaint, Fine.new] do |f| %>
+		<button class="btn btn-primary"> Approve </button>
+	<% end %>
+	<%= form_for [@complaint, Fine.new] do |f| %>
+		<button class="btn btn-danger"> Reject </button>
+	<% end %>
 </div>

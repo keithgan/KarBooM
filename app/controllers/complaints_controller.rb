@@ -1,7 +1,6 @@
 class ComplaintsController < ApplicationController
 	skip_before_action :verify_authenticity_token, :only => [:create]
 
-
 	def index
 		@complaints=Complaint.all
 		@users=User.all
@@ -13,13 +12,11 @@ class ComplaintsController < ApplicationController
 	end
 
 	def show
-		@complaint = Complaint.find_by(id:params[:format])
+		@complaint = Complaint.find(params[:id])
 		@users=User.all
-
 	end
 
 	def create
-		
 		complaint= current_user.complaints.new(get_params)
 		# Checks offence and assign fine
 		if (get_params[:offence] == "1") 

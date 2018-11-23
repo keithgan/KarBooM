@@ -18,11 +18,15 @@ Rails.application.routes.draw do
   
   resources :users
 
-  get "/users/:id/edit" => "users/registrations#edit", controller: "users/registrations", as: "edit_user_details"
-
-  resource :complaints
+  get "/users/:id/edit" , to: "users/registrations#edit", as: "edit_user_details"
   
-	post '/complaints/create', to: 'complaints#create'
+  resources :complaints do
+    resources :fines
+  end
+    
+  get "/officers/:officer_id/complaints/:id" , to: "complaints#show", as: "show_complaint"
+
+	# post '/complaints/create', to: 'complaints#create'
   get "/complaints/index", to: 'complaints#index'
 
 end

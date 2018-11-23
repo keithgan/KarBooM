@@ -12,6 +12,7 @@ class OfficersController < ApplicationController
     end
     # Officer Profile Page
     def show
+        @officer = Officer.find(params[:id])
         @complaints = Complaint.all
     end
     # Officer Request for Change from Super Admin Page
