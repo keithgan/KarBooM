@@ -16,9 +16,9 @@
                     </div>
                     <div id="option_tabs">
                         <div class="row">
-                            <div class="col-4">Complaints</div>
-                            <div class="col-4">Appeals</div>
-                            <div class="col-4">Fines</div>
+                            <div class="col-4" id="complaints-tab">Complaints</div>
+                            <div class="col-4" id="appeals-tab">Appeals</div>
+                            <div class="col-4" id="fines-tab">Fines</div>
                         </div>
                     </div>
                 </div>
@@ -119,36 +119,57 @@
                     <div class="modal-content">
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
-                                <div class="carousel-item active">
+                                <% @complaints.each do |list| %>
+                                    <% if list == @complaints[0] %>
+                                        <div class="carousel-item active">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    Report ID# <%= list.id %>
+                                                </div>
+                                                <img class="card-img-top img-fluid" src="<%= list.avatar %>"/>
+                                                <div class="card-body">
+                                                    <h5 class="card-title"><%= list.number_plate %></h5>
+                                                    <p class="card-text"><%= list.offence %></p>
+                                                    <a href="#" class="btn btn-primary">Approve</a>
+                                                    <a href="#" class="btn btn-primary"> Reject </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <% else %>
+                                        <div class="carousel-item">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    Report ID# <%= list.id %>
+                                                </div>
+                                                <img class="card-img-top img-fluid" src="<%= list.avatar %>"/>
+                                                <div class="card-body">
+                                                    <table class="table table-borderless table-hover">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><%= list.number_plate %></th>
+                                                            </tr>
+                                                            <tr>                                                           <tr>
+                                                                <td><%= list.offence %></th>
+                                                            </tr>
+                                                            <tr>                                                           <tr>
+                                                                <td><%= list.comment %></th>
+                                                            </tr>
+                                                            <tr>                                                           <tr>
+                                                                <td><%= list.user_id %></th>
+                                                            </tr>
+                                                            <tr>                                                           <tr>
+                                                                <td> Status </th>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                        <a href="#" class="btn btn-primary">Approve</a>
+                                                        <a href="#" class="btn btn-primary"> Reject </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <% end %>
+                                <% end %>
 
-                                    <div class="card">
-                                        <div class="card-header">
-                                            ID# @complaint.id 
-                                        </div>
-                                        <img class="card-img-top img-fluid" src="Gambar1.jpg"/>
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card One</h5>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <a href="#" class="btn btn-primary">Approve</a>
-                                            <a href="#" class="btn btn-primary">Reject</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                
-                                <div class="carousel-item">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            ID# @complaint.id
-                                        </div>
-                                        <img class="card-img-top height: 0.1rem" src="Gambar2.jpg" alt="Card image cap"/>
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card Two</h5>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="carousel-item">
                                     <div class="card">
                                         <div class="card-header">
@@ -156,7 +177,7 @@
                                         </div>
                                         <img class="card-img-top" src="Gambar3.jpg" alt="Card image cap"/>
                                         <div class="card-body">
-                                            <h5 class="card-title">Card Three</h5>
+                                            <h5 class="card-title">Card Example</h5>
                                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                             <a href="#" class="btn btn-primary">Approve</a>
                                             <a href="#" class="btn btn-primary">Reject</a>
