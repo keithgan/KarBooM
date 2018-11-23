@@ -46,6 +46,7 @@
                 <td><%= list.offence %></td>
                 <td><%= list.user_id %></td>
                 <td>Status</td>
+                <td> <%= link_to t(".view"), show_complaint_path(@officer.id, list) %> </td>
                 </tr>
             <% end %>
         </tbody>

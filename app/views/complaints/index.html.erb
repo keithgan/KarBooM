@@ -3,7 +3,6 @@
 	<hr/>
 
 		<%@complaints.each_with_index do |c,i|%>
-		<%if c.user_id == current_user.id%>
 			<table style="width:100%">
 			<tr>
 				<td>Coordinates: </td>
@@ -41,6 +40,5 @@
 			</table>
 		<%end%>
 		<hr/>
-		<%end%>
 	
 </div>

@@ -12,13 +12,11 @@ class ComplaintsController < ApplicationController
 	end
 
 	def show
-		@complaint = Complaint.find_by(id:params[:format])
+		@complaint = Complaint.find(params[:id])
 		@users=User.all
-
 	end
 
 	def create
-		
 		complaint= current_user.complaints.new(get_params)
 		# Checks offence and assign fine
 		if (get_params[:offence] == "1") 
