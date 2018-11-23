@@ -57,7 +57,6 @@ class ComplaintsController < ApplicationController
 			complaint.update(address:address)
 			complaint.update(postal_code:postal_code)
 		end
-		byebug
 
 		# Find offender thru number plate
 		offender= User.find_by(number_plate:get_params[:number_plate])
