@@ -12,6 +12,7 @@ class ComplaintsController < ApplicationController
 	end
 
 	def show
+		byebug
 		@complaint = Complaint.find(params[:id])
 		@users=User.all
 	end

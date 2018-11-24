@@ -12,55 +12,58 @@
 
 <!-- Fill up the form. 
 Submit button triggers getLocation and gets info from form, and sends it tgt to controller thru JS request -->
-<hr/>
+<div class= "container complaint-form">
+    <form>
 
-<form>
+      <div class="form-group">
+        <label>Upload Picture</label><br/>
+        <td><%=file_field(:avatar, accept:'image/*', id:"file-input")%></td>
+      </div>
 
-  <div class="form-group">
-    <label>Upload Picture</label><br/>
-    <td><%=file_field(:avatar, accept:'image/*', id:"file-input")%></td>
-  </div>
+      <div class="form-group">
+        <label>Number Plate</label><br/>
+        <select name="number_plate" id="number_plate">
+                    <!-- This should be a autocomplete search input in the future -->
+                     <option selected>Select Number Plate</option>
+                     <%number_plate_arr.each do |numplate|%>
+                        <option value="<%=numplate%>"><%=numplate%></option>
+                    <%end%>
+        </select>
+      </div>
 
-  <div class="form-group">
-    <label>Number Plate</label><br/>
-    <select name="number_plate" id="number_plate">
-                <!-- This should be a autocomplete search input in the future -->
-                 <option selected>Select Number Plate</option>
-                 <%number_plate_arr.each do |numplate|%>
-                    <option value="<%=numplate%>"><%=numplate%></option>
-                <%end%>
-    </select>
-  </div>
+      <div class="form-group">
+        <label>Offence</label><br/>
+        <select name="offence" id="offence">
+                    <option selected>Select Offence</option>
+                    <option value="1">Double Parking with no passenger inside the car</option>
+                    <option value="2">Not parking entirely inside the box</option>
+                    <option value="3">Parking in OKU without valid disabled permit</option>
+                    <option value="4">Parking at a bus station or a bus stand</option>
+                    <option value="5">Parking on a yellow/white line</option>
+                    <option value="6">Parking somewhere which obstructs traffic</option>
+        </select>
+      </div>
 
-  <div class="form-group">
-    <label>Offence</label><br/>
-    <select name="offence" id="offence">
-                <option selected>Select Offence</option>
-                <option value="1">Double Parking with no passenger inside the car</option>
-                <option value="2">Not parking entirely inside the box</option>
-                <option value="3">Parking in OKU without valid disabled permit</option>
-                <option value="4">Parking at a bus station or a bus stand</option>
-                <option value="5">Parking on a yellow/white line</option>
-                <option value="6">Parking somewhere which obstructs traffic</option>
-    </select>
-  </div>
+        <div class="form-group">
+            <label>Comment</label><br/>
+            <input type="text" id="comment" class="form-control">
+        </div>
 
-    <div class="form-group">
-        <label>Comment</label><br/>
-        <input type="text" id="comment" class="form-control">
+    <button type="button" onclick="getLocation()" class="btn btn-primary">Submit</button>
+    </form>
+
+    <hr/>
+
+    <!-- LOCATION FINDER -->
+    <p>After submission, finding current location may take up to a minute.</p>
+    <div class="container">
+        <h5 id="demo"></h5>  
     </div>
 
-<button type="button" onclick="getLocation()" class="btn btn-primary">Submit</button>
-</form>
-
-<hr/>
-
-<!-- LOCATION FINDER -->
-<p>After submission, finding current location may take up to a minute.</p>
-<div class="container">
-    <h5 id="demo"></h5>  
 </div>
 
+<!-- To use jquery -->
+<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
 <script>
 var x = document.getElementById("demo");
 var input = document.querySelector('input[type=file]'); // see Example 4
@@ -68,7 +71,10 @@ var comment = document.getElementById("comment")
 var number_plate = document.getElementById("number_plate")
 var offence = document.getElementById("offence")
 
-// prompt user for permission as page loads
+// Run the function when the page is done loading
+// $(document).ready(function () {
+//         getLocation();
+//     });
 
 
 function getLocation() {
@@ -97,6 +103,7 @@ function showPosition(position) {
          }
          }
 
+
 		form.append('avatar', file);
 		form.append('longitude',position.coords.longitude)
 		form.append('latitude',position.coords.latitude)
@@ -105,6 +112,7 @@ function showPosition(position) {
         form.append('offence',offence.value)
 		xhr.open('post', 'create', true);
 		xhr.send(form)
+    
 	
 }
 
