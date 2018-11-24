@@ -75,6 +75,12 @@ class ComplaintsController < ApplicationController
 		@complaint_status = Complaint.find(get_params[:complaint_id])
 		@complaint_status.status = 1
 		@complaint_status.save
+	def complaint_history
+		@complaints=Complaint.all
+		@users=User.all
+	end
+
+private
 
 		@next_index = params[:index].to_i + 1
 		@index = params[:index].to_i

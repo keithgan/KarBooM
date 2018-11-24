@@ -24,7 +24,8 @@ Rails.application.routes.draw do
 
   get "/users/:id/edit" , to: "users/registrations#edit", as: "edit_user_details"
   get "/complaints/index", to: 'complaints#index'
-  
+  get "/complaint_history", to: 'complaints#complaint_history'
+
   resources :complaints do
     post "/carousel_approve", to: 'complaints#carousel_approve'
     post "/carousel_reject", to: 'complaints#carousel_reject'
