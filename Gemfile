@@ -7,6 +7,7 @@ ruby '2.5.1'
 gem 'devise'
 gem 'kaminari' # Pagination
 gem "cancan" # Allows for Easy Authorizations
+gem 'figaro' # Security
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
