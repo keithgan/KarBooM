@@ -18,6 +18,7 @@ class ComplaintsController < ApplicationController
 
 	def create
 		complaint= current_user.complaints.new(get_params)
+		byebug
 
 
 		# NUMBER PLATE RECOGNIZER
