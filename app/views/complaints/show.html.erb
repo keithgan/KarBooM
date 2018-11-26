@@ -49,12 +49,17 @@
 </div>
 
 <br/>
-
-<div class="container" style= "text-align:center">
-	<%= form_for [@complaint, Fine.new] do |f| %>
-		<button class="btn btn-primary"> Approve </button>
+	<% if current_officer %>
+		<div class="form-group row">
+			<div class= "form-group col-md-1">
+				<%= form_for [@complaint, Fine.new] do |f| %>
+					<button class="btn btn-primary"> Approve </button>
+				<% end %>
+			</div>
+			<div class= "form-group col-md-1">
+				<%= form_with url: complaint_reject_path(@complaint) do |f| %>
+					<button class="btn btn-danger"> Reject </button>
+				<% end %>
+			</div>
+		</div>
 	<% end %>
-	<%= form_for [@complaint, Fine.new] do |f| %>
-		<button class="btn btn-danger"> Reject </button>
-	<% end %>
-</div>

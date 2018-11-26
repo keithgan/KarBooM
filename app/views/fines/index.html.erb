@@ -1,0 +1,51 @@
+<div class="container">
+	<h1>Fine History</h1>
+	<hr/>
+		<%@fines.each do |fine|%>
+			<table style="width:100%">
+			<tr>
+				<td>Car No: </td>
+			    <td><%=fine.complaint.number_plate%></td>
+				<td><%=link_to 'View', show_fine_path(fine) %></td>
+                <td><%=link_to 'Pay', 
+			</tr>
+            <tr>
+                <td>Date:</td>
+                <td><%=fine.date%></td>
+            </tr>
+            <tr>
+                <td>Time:</td>
+                <td><%=fine.time%></td>
+            </tr>
+            <tr>
+                <td>Location:</td>
+                <td><%=fine.location%></td>
+            </tr>
+            <tr>
+                <td>Offence:</td>
+                <td><%=fine.offence%></td>
+            </tr>
+            <tr>
+                <td>Fine:</td>
+                <td>RM <%=fine.amount%></td>
+            </tr>
+            <tr>
+                <td>Given by:</td>
+                <td><%=fine.officer.full_name%></td>
+            </tr>
+            <tr>
+                <td>Image Proof:</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><%=image_tag fine.complaint.avatar.url , width: "500"%></td>
+            </tr>
+            <tr>
+                <td>Status:</td>
+                <td><%=fine.status.capitalize%></td>
+            </tr>
+            </table>
+        <hr/>
+		<%end%>
+	
+</div>

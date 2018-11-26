@@ -1,4 +1,13 @@
 class FinesController < ApplicationController
+
+    def index
+        @fines = Fine.all
+    end
+
+    def show
+        @fine = Fine.find(params[:id])
+    end
+
     def create
         @complaint = Complaint.find(params[:complaint_id])
         @fine = Fine.create_from_complaint(@complaint, current_officer)
