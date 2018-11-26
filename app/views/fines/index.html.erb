@@ -7,7 +7,7 @@
 				<td>Car No: </td>
 			    <td><%=fine.complaint.number_plate%></td>
 				<td><%=link_to 'View', show_fine_path(fine) %></td>
-                <td><%=link_to 'Pay', 
+                <td><%= link_to "Make Payment", braintree_new_path %> </td>
 			</tr>
             <tr>
                 <td>Date:</td>

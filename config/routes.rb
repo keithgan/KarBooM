@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'braintree/new'
   devise_for :officers, controllers: {
     sessions: "officers/sessions",
     passwords: "officers/passwords",
@@ -40,4 +41,5 @@ Rails.application.routes.draw do
   get "/fines", to: "fines#index", as: "all_fines"
   get "/fines/:id" , to: "fines#show", as: "show_fine"
 
+  post 'braintree/checkout'
 end
