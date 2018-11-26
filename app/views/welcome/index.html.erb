@@ -7,24 +7,8 @@
 <%= link_to "Sign Out", destroy_officer_session_path, method: :delete %>
 
 
-<%= form_tag("/welcome/numplate", method: "post") do %>
- <%=file_field(:avatar, accept:'image/*', id:"file-input")%><br/>
-  <%= submit_tag("Upload") %>
-<% end %>
-
-<hr/>
-
-
-    <form action="/welcome/numplate" method="post">
-      <div class="form-group" >
-        <label>Upload Picture</label><br/>
-        <td><%=file_field(:avatar, accept:'image/*', id:"file-input")%></td>
-      </div>
-        <button type="button" class="btn btn-primary">Submit</button>
-    </form>
-
 <hr/>
 <%= form_with url: welcome_numplate_path do |form| %>
   <%= form.file_field :avatar %>
-  <%= form.submit %>
+  <%= form.submit class:"btn btn-primary"%>
 <% end %>
