@@ -1,0 +1,39 @@
+<% if list == @complaints[0] %>
+    <div class="carousel-item active" id="active-carousel-card">
+        <div class="card"> 
+            <div class="card-header">
+                Report ID# <%= list.id %>
+            </div>
+            <img class="card-img-top img-fluid" src="<%= list.avatar %>"/>
+            <div class="card-body">
+                <h5 class="card-title"><%= list.number_plate %></h5>
+                <p class="card-text"><%= list.offence %></p>
+                <%= form_with url: complaint_carousel_approve_path(:complaint_id=>list.id), method: :post do |form| %>
+                    <%= form.submit "Approve" %>
+                <% end %>
+                <%= form_with url: complaint_carousel_reject_path(:complaint_id=>list.id), method: :post do |form| %>
+                    <%= form.submit "Reject" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+<% else %>
+    <div class="carousel-item">
+        <div class="card">
+            <div class="card-header">
+                Report ID# <%= list.id %>
+            </div>
+            <img class="card-img-top img-fluid" src="<%= list.avatar %>"/>
+            <div class="card-body">
+                <h5 class="card-title"><%= list.number_plate %></h5>
+                <p class="card-text"><%= list.offence %></p>
+                <%= form_with url: complaint_carousel_approve_path(:complaint_id=>list.id), method: :post do |form| %>
+                    <%= form.submit "Approve" %>
+                <% end %>
+                <%= form_with url: complaint_carousel_reject_path(:complaint_id=>list.id), method: :post do |form| %>
+                    <%= form.submit "Reject" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+<% end %>

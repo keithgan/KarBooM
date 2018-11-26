@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_23_022834) do
+ActiveRecord::Schema.define(version: 2018_11_23_031034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2018_11_23_022834) do
     t.string "address"
     t.string "postal_code"
     t.integer "offender_id"
+    t.integer "status", default: 0
     t.index ["number_plate"], name: "index_complaints_on_number_plate"
     t.index ["offender_id"], name: "index_complaints_on_offender_id"
   end
@@ -67,11 +68,11 @@ ActiveRecord::Schema.define(version: 2018_11_23_022834) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "full_name", null: false
-    t.string "ic_number", null: false
-    t.string "driving_license", null: false
-    t.string "number_plate", null: false
-    t.string "gender", null: false
+    t.string "full_name", default: "", null: false
+    t.string "ic_number", default: "", null: false
+    t.string "driving_license", default: "", null: false
+    t.string "number_plate", default: "", null: false
+    t.string "gender", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

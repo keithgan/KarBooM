@@ -14,11 +14,24 @@
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">View All</button>
                     </div>
+                    </br>
                     <div id="option_tabs">
                         <div class="row">
-                            <div class="col-4">Complaints</div>
-                            <div class="col-4">Appeals</div>
-                            <div class="col-4">Fines</div>
+                            <div class="col-4" id="complaints-tab">
+                                <%= form_with url: complaints_tab_path, method: :get do |form| %>
+                                    <%= form.submit "Complaints" %>
+                                <% end %>
+                            </div>
+                            <div class="col-4" id="appeals-tab">
+                                <%= form_with url: appeals_tab_path, method: :get do |form| %>
+                                    <%= form.submit "Appeals" %>
+                                <% end %>
+                            </div>
+                            <div class="col-4" id="fines-tab">
+                                <%= form_with url: appeals_tab_path, method: :get do |form| %>
+                                    <%= form.submit "Fines" %>
+                                <% end %>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -26,30 +39,10 @@
         </div>
     </div>
 </div>
-
+</br>
 <div class="container-fluid">
-    <table class="table table-hover">
-        <thead>
-            <tr class="table-info">
-            <th scope="col">#</th>
-            <th scope="col">Car No. Plate</th>
-            <th scope="col">Offence</th>
-            <th scope="col">Submitted By</th>
-            <th scope="col">Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @complaints.each do |list| %>
-                <tr>
-                <th scope="row"><%= list.id %></th>
-                <td><%= list.number_plate %></td>
-                <td><%= list.offence %></td>
-                <td><%= list.user_id %></td>
-                <td>Status</td>
-                <td> <%= link_to t(".view"), show_complaint_path(@officer.id, list) %> </td>
-                </tr>
-            <% end %>
-        </tbody>
+    <table class="table table-hover" id="officer-work-table">
+        <%= render 'officers/complaints' %>
     </table>
 </div>
 
@@ -75,20 +68,6 @@
             @complaint.status
         </div>
     </div>
-
-
-
-
-<div class="complaint_card">
-    <div>ID#</div>
-    <div>@complaint.avatar</div>
-    <div>Car No. Plate</div>
-    <div>Offence</div>
-    <div>Offence#</div>
-    <div>@complaint.comment</div>
-    <div>@complaint.user_id</div>
-    <div>Approve</div><div>Reject</div>
-</div>
 
 <html>
     <head>
@@ -119,36 +98,9 @@
                     <div class="modal-content">
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
-                                <div class="carousel-item active">
-
-                                    <div class="card">
-                                        <div class="card-header">
-                                            ID# @complaint.id 
-                                        </div>
-                                        <img class="card-img-top img-fluid" src="Gambar1.jpg"/>
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card One</h5>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <a href="#" class="btn btn-primary">Approve</a>
-                                            <a href="#" class="btn btn-primary">Reject</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                
-                                <div class="carousel-item">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            ID# @complaint.id
-                                        </div>
-                                        <img class="card-img-top height: 0.1rem" src="Gambar2.jpg" alt="Card image cap"/>
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card Two</h5>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                <% @complaints.each do |list| %>
+                                    <%= render 'officers/carousel_item' %>
+                                <% end %>
                                 <div class="carousel-item">
                                     <div class="card">
                                         <div class="card-header">
@@ -156,10 +108,29 @@
                                         </div>
                                         <img class="card-img-top" src="Gambar3.jpg" alt="Card image cap"/>
                                         <div class="card-body">
-                                            <h5 class="card-title">Card Three</h5>
+                                            <h5 class="card-title">Card Example</h5>
                                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <a href="#" class="btn btn-primary">Approve</a>
-                                            <a href="#" class="btn btn-primary">Reject</a>
+                                            <table class="table table-borderless table-hover">
+                                                <tbody>
+                                                    <tr>
+                                                        <td><%= list.number_plate %></th>
+                                                    </tr>
+                                                    <tr>                                                           <tr>
+                                                        <td><%= list.offence %></th>
+                                                    </tr>
+                                                    <tr>                                                           <tr>
+                                                        <td><%= list.comment %></th>
+                                                    </tr>
+                                                    <tr>                                                           <tr>
+                                                        <td><%= list.user_id %></th>
+                                                    </tr>
+                                                    <tr>                                                           <tr>
+                                                        <td><%= list.status %></th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <a href="#" class="btn btn-primary carousel-approve">Approve</a>
+                                            <a href="#" class="btn btn-primary carousel-reject">Reject</a>
                                         </div>
                                     </div>
                                 </div>
@@ -201,31 +172,32 @@
 </html>
 
 <script>
-$("#city-search").on("keyup", function(){
-  autocomplete()
+
+$(".#carousel-approve").click(function(){
+  approveComplaint()
 });
 
-function autocomplete(){
-  $.ajax({
-    url: '/search',
-    type: 'POST',
-    // data: $("#city-seasrch").serialize(), //takes the form data and authenticity toke and converts it into a standard URL
-    dataType: 'json', //specify what type of data you're expecting back from the servers
-    error: function() {
-        console.log("Something went wrong");
-    },
-    success: function(data) {
-      console.log(data)
-      $("#list").html("");
+function approveComplaint(){
+/*
+Change Status to Approved # Send "Approve" data to Controller, Source Complaint ID, Send Post Request to Alter DB Table
+Request Sent to Remove Card/Row from Carousel/Table # Remove by ID 
+Reloads Next Card if Present
+*/
+xhr.open('post', 'carousel_approve', true);
+xhr.send(form)
+};
 
-      data.forEach(function(element) {
-        var option = document.createElement("option");
-        option.value = element;
+$(".#carousel-reject").click(function(){
+  rejectComplaint()
+});
 
-        //append option to list
-        $("#list").append(option);
-      });
-    }
-  });
-}
+function rejectComplaint(){
+/*
+Change Status to Rejected # Send Post Request to Alter DB Table
+Request Sent to Remove Card/Row from Carousel/Table
+Reloads Next Card if Present
+*/
+xhr.open('post', 'carousel_reject', true);
+xhr.send(form)
+};
 </script>

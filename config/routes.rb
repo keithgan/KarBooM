@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   resources :officers
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
+  get "/complaints_tab", to: 'officers#complaints_tab'
+  get "/appeals_tab", to: 'officers#appeals_tab'
+
+
   get 'welcome/index'
   root to: "welcome#index"
 
@@ -21,6 +25,9 @@ Rails.application.routes.draw do
   get "/users/:id/edit" , to: "users/registrations#edit", as: "edit_user_details"
   
   resources :complaints do
+    post "/carousel_approve", to: 'complaints#carousel_approve'
+    post "/carousel_reject", to: 'complaints#carousel_reject'
+
     resources :fines
   end
     
