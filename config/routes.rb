@@ -27,14 +27,17 @@ Rails.application.routes.draw do
   resources :complaints do
     post "/carousel_approve", to: 'complaints#carousel_approve'
     post "/carousel_reject", to: 'complaints#carousel_reject'
-
+    post "/reject", to: "complaints#reject", as: 'reject'
     resources :fines
   end
-    
+  
   get "/complaints/:id" , to: "complaints#show", as: "show_complaint"
-
+  
   post '/complaints/create', to: 'complaints#create'
   
   get "/complaints", to: 'complaints#index'
+
+  get "/fines", to: "fines#index", as: "all_fines"
+  get "/fines/:id" , to: "fines#show", as: "show_fine"
 
 end

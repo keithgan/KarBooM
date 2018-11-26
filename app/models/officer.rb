@@ -5,4 +5,5 @@ class Officer < ApplicationRecord
          :recoverable, :rememberable, :validatable
   paginates_per 50
   enum role: {officer: 0, superadmin: 1}
+  has_many :fines
 end
