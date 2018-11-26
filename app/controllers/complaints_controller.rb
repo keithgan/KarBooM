@@ -13,9 +13,8 @@ class ComplaintsController < ApplicationController
 	end
 
 	def show
-		@complaint = Complaint.find_by(id:params[:format])
+		@complaint = Complaint.find(params[:id])
 		@users=User.all
-
 	end
 
 	def create
@@ -73,17 +72,30 @@ class ComplaintsController < ApplicationController
 
 	# Ajax for Carousel Approve/Reject on Officer Show Page's Carousel Cards
 	def carousel_approve
-		complaint_status = Complaint.find(get_params[:complaint_id])
-		complaint_status.status = 1
-		complaint_status.save
+		@complaint_status = Complaint.find(get_params[:complaint_id])
+		@complaint_status.status = 1
+		@complaint_status.save
+
+		@next_index = params[:index].to_i + 1
+		@index = params[:index].to_i
+
 		@complaints = Complaint.where(status: "0")
+
+		@complaint = Complaint.find(get_params[:complaint_id])
+		fine = Fine.create_from_complaint(@complaint, current_officer)
+		fine.save
+
 		render partial: '/officers/carousel_approve'
 	end
  
 	def carousel_reject
-		complaint_status = Complaint.find(get_params[:complaint_id])
-		complaint_status.status = 2
-		complaint_status.save
+		@complaint_status = Complaint.find(get_params[:complaint_id])
+		@complaint_status.status = 2
+		@complaint_status.save
+
+		@next_index = params[:index].to_i + 1
+		@index = params[:index].to_i
+
 		@complaints = Complaint.where(status: "0")
 		render partial: '/officers/carousel_reject'
 	end	

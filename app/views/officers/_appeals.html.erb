@@ -8,13 +8,13 @@
     </tr>
 </thead>
 <tbody>
-    <% @complaints.each do |list| %>
+    <% @appeals.each do |list| %>
         <tr>
         <th scope="row"><%= list.id %></th>
-        <td><%= list.number_plate %></td>
+        <td><%= list.location %></td>
         <td><%= list.offence %></td>
-        <td><%= list.offender_id %></td>
-        <td><%= list.status %></td>
+        <td><%= list.amount %></td>
+        <td><%= list.complaint_id %></td>
         </tr>
     <% end %>
 </tbody>

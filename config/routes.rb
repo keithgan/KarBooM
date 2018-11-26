@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   
   get "/complaints_tab", to: 'officers#complaints_tab'
   get "/appeals_tab", to: 'officers#appeals_tab'
-
+  get "/fines_tab", to: 'officers#fines_tab'
 
   get 'welcome/index'
   root to: "welcome#index"
@@ -31,9 +31,10 @@ Rails.application.routes.draw do
     resources :fines
   end
     
-  get "/officers/:officer_id/complaints/:id" , to: "complaints#show", as: "show_complaint"
+  get "/complaints/:id" , to: "complaints#show", as: "show_complaint"
 
-	# post '/complaints/create', to: 'complaints#create'
-  get "/complaints/index", to: 'complaints#index'
+  post '/complaints/create', to: 'complaints#create'
+  
+  get "/complaints", to: 'complaints#index'
 
 end

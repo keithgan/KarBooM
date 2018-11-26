@@ -1,1 +1,8 @@
 $("#officer-work-table").html("<%= j render partial: '/officers/complaints' %>");
+
+<% if @complaints.length != 0 %>
+    document.getElementById("carousel-card-<%= @next_index %>").classList.add("active");
+    document.getElementById("carousel-card-<%= @index %>").remove();
+<% else %>
+    location.reload();
+<% end %>
