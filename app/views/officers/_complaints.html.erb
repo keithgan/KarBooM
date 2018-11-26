@@ -14,9 +14,9 @@
         <td><%= list.number_plate %></td>
         <td><%= list.offence %></td>
         <td><%= list.user_id %></td>
-        <td><%= list.status %></td>
-        <td> <%= link_to t(".view"), show_complaint_path(@officer.id, list) %> </td>
+        <td> <%= link_to t("#{list.status}"), show_complaint_path(list) %></td>
         </tr>
     <% end %>
 </tbody>
 
+        

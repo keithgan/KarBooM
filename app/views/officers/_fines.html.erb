@@ -1,0 +1,20 @@
+<thead>
+    <tr class="table-info">
+    <th scope="col">#</th>
+    <th scope="col">Location</th>
+    <th scope="col">Offence</th>
+    <th scope="col">Amount</th>
+    <th scope="col">Complaint Id</th>
+    </tr>
+</thead>
+<tbody>
+    <% @fines.each do |list| %>
+        <tr>
+        <th scope="row"><%= list.id %></th>
+        <td><%= list.location %></td>
+        <td><%= list.offence %></td>
+        <td><%= list.amount %></td>
+        <td><%= list.complaint_id %></td>
+        </tr>
+    <% end %>
+</tbody>

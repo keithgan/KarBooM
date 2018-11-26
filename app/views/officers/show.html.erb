@@ -3,8 +3,8 @@
         <div class="col-3">
             <div id="side_profile">
                 <div id="avatar_profile"></div>
-                <p class="officer_profile_info">Name: @officer.full_name</p>
-                <p class="officer_profile_info">Locality: @officer.officer_locality</p>
+                <p class="officer_profile_info">Name: <%= @officer.full_name %></p>
+                <p class="officer_profile_info">Locality: <%= @officer.officer_locality %></p>
             </div>
         </div>
         <div class="col-9">
@@ -28,7 +28,7 @@
                                 <% end %>
                             </div>
                             <div class="col-4" id="fines-tab">
-                                <%= form_with url: appeals_tab_path, method: :get do |form| %>
+                                <%= form_with url: fines_tab_path, method: :get do |form| %>
                                     <%= form.submit "Fines" %>
                                 <% end %>
                             </div>
@@ -42,32 +42,9 @@
 </br>
 <div class="container-fluid">
     <table class="table table-hover" id="officer-work-table">
-        <%= render 'officers/complaints' %>
+        <%= render partial: 'officers/complaints' %>
     </table>
 </div>
-
-    <div class="row" id="officer_task_list">
-        <div class="col-1 task_column">
-            <h3>Index</h3>
-            @complaint.id
-        </div>
-        <div class="col-2 task_column">
-            <h3>Car No. Plate</h3>
-             @complaint.number_plate
-        </div>
-        <div class="col-4 task_column">
-            <h3>Offence</h3>
-             @complaint.offence
-        </div>
-        <div class="col-3 task_column">
-            <h3>Reporting User</h3>
-            @complaint.user_id
-        </div>
-        <div class="col-2 task_column">
-            <h3>Complaint Status</h3>
-            @complaint.status
-        </div>
-    </div>
 
 <html>
     <head>
@@ -87,19 +64,15 @@
     </head>
     <body>
         <div class="container text-center">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-            View All
-            </button>
       
             <!-- Modal -->
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <% @complaints.each do |list| %>
-                                    <%= render 'officers/carousel_item' %>
+                            <div class="carousel-inner" id="officer-master-carousel">
+                                <% @complaints.each_with_index do |list, index| %>
+                                    <%= render partial: 'officers/carousel_item', locals: {list: list, index: index} %>
                                 <% end %>
                                 <div class="carousel-item">
                                     <div class="card">
@@ -113,19 +86,19 @@
                                             <table class="table table-borderless table-hover">
                                                 <tbody>
                                                     <tr>
-                                                        <td><%= list.number_plate %></th>
+                                                        <td><%#= list.number_plate %></th>
                                                     </tr>
                                                     <tr>                                                           <tr>
-                                                        <td><%= list.offence %></th>
+                                                        <td><%#= list.offence %></th>
                                                     </tr>
                                                     <tr>                                                           <tr>
-                                                        <td><%= list.comment %></th>
+                                                        <td><%#= list.comment %></th>
                                                     </tr>
                                                     <tr>                                                           <tr>
-                                                        <td><%= list.user_id %></th>
+                                                        <td><%#= list.user_id %></th>
                                                     </tr>
                                                     <tr>                                                           <tr>
-                                                        <td><%= list.status %></th>
+                                                        <td><%#= list.status %></th>
                                                     </tr>
                                                 </tbody>
                                             </table>
