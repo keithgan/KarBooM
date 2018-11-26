@@ -1,7 +1,10 @@
 class FinesController < ApplicationController
 
+    def index
+        @fines = Fine.all
+    end
+
     def show
-        @complaint = Complaint.find_by(id:params[:format])
         @fine = Fine.find(params[:id])
     end
 

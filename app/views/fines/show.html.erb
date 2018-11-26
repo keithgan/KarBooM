@@ -4,11 +4,11 @@
 	<table style="width:100%">
 		<tr>
 			<td>Number Plate: </td>
-			<td><%=@complaint.number_plate%></td>
+			<td><%=@fine.complaint.number_plate%></td>
 		</tr>
 		<tr>
-			<td>Address:</td>
-			<td><%=@complaint.address%></td>
+			<td>Location:</td>
+			<td><%=@fine.complaint.address%></td>
 		</tr>
         <tr>
             <td>Date:</td>
@@ -24,11 +24,11 @@
 		</tr>
 		<tr>
 			<td>Fine:</td>
-			<td>RM <%=@fine.amount%></td>
+			<td><%=@fine.amount%></td>
 		</tr>		
 		<tr>
 			<td>Given by:</td>
-			<td><%=current_officer%></td>
+			<td><%=@fine.officer.full_name%></td>
 		</tr>
 
 		<tr>
@@ -36,7 +36,7 @@
 		</tr>
 		<tr>
 			<td></td>
-			<td><%=image_tag @complaint.avatar.url , width: "500"%></td>
+			<td><%=image_tag @fine.complaint.avatar.url , width: "500"%></td>
 		</tr>
 		</table>
 </div>
