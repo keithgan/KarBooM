@@ -13,7 +13,7 @@ class OfficersController < ApplicationController
     # Officer Profile Page
     def show
         @officer = Officer.find(params[:id])
-        @complaints = Complaint.all
+        @complaints = Complaint.where(status: "0")
     end
     # Officer Request for Change from Super Admin Page
     def edit
@@ -23,5 +23,23 @@ class OfficersController < ApplicationController
     end
 
     def destroy
+    end
+
+    def complaints_tab
+		@complaints = Complaint.where(status: "0")
+		render partial: '/officers/complaints_tab'
+	end
+
+	def appeals_tab
+		@complaints = Complaint.where(status: "0")
+		render partial: '/officers/appeals_tab'
+    end
+    
+    def carousel_approve
+        x
+    end
+
+    def carousel_reject
+        x
     end
 end

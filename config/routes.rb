@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :officers
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
+  get "/complaints_tab", to: 'officers#complaints_tab'
+  get "/appeals_tab", to: 'officers#appeals_tab'
+
   get 'welcome/index'
   root to: "welcome#index"
 

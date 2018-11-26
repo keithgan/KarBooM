@@ -1,0 +1,21 @@
+<thead>
+    <tr class="table-info">
+    <th scope="col">#</th>
+    <th scope="col">Car No. Plate</th>
+    <th scope="col">Offence</th>
+    <th scope="col">Submitted By</th>
+    <th scope="col">Status</th>
+    </tr>
+</thead>
+<tbody>
+    <% @complaints.each do |list| %>
+        <tr>
+        <th scope="row"><%= list.id %></th>
+        <td><%= list.number_plate %></td>
+        <td><%= list.offence %></td>
+        <td><%= list.user_id %></td>
+        <td><%= list.status %></td>
+        </tr>
+    <% end %>
+</tbody>
+

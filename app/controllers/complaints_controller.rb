@@ -68,6 +68,16 @@ class ComplaintsController < ApplicationController
 	
 	end
 
+	def complaints_tab
+		@complaints = Complaint.all
+		render partial: '/officers/complaints_tab'
+	end
+
+	def appeals_tab
+		@complaints = Complaint.all
+		render partial: '/officers/appeals_tab'
+	end
+
 private
 
 def get_params
