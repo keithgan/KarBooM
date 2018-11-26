@@ -1,6 +1,7 @@
 class ComplaintsController < ApplicationController
 	skip_before_action :verify_authenticity_token, :only => [:create]
 
+
 	def index
 		@complaints=Complaint.all
 		@users=User.all
@@ -12,11 +13,13 @@ class ComplaintsController < ApplicationController
 	end
 
 	def show
-		@complaint = Complaint.find(params[:id])
+		@complaint = Complaint.find_by(id:params[:format])
 		@users=User.all
+
 	end
 
 	def create
+		
 		complaint= current_user.complaints.new(get_params)
 		# Checks offence and assign fine
 		if (get_params[:offence] == "1") 
@@ -65,22 +68,29 @@ class ComplaintsController < ApplicationController
 		else
 			render 'new'
 		end
-	
+
 	end
 
-	def complaints_tab
-		@complaints = Complaint.all
-		render partial: '/officers/complaints_tab'
+	# Ajax for Carousel Approve/Reject on Officer Show Page's Carousel Cards
+	def carousel_approve
+		complaint_status = Complaint.find(get_params[:complaint_id])
+		complaint_status.status = 1
+		complaint_status.save
+		@complaints = Complaint.where(status: "0")
+		render partial: '/officers/carousel_approve'
 	end
-
-	def appeals_tab
-		@complaints = Complaint.all
-		render partial: '/officers/appeals_tab'
-	end
+ 
+	def carousel_reject
+		complaint_status = Complaint.find(get_params[:complaint_id])
+		complaint_status.status = 2
+		complaint_status.save
+		@complaints = Complaint.where(status: "0")
+		render partial: '/officers/carousel_reject'
+	end	
 
 private
 
 def get_params
-	params.permit(:latitude,:longitude,:img,:comment,:avatar,:number_plate,:offence)
+	params.permit(:latitude,:longitude,:img,:comment,:avatar,:number_plate,:offence,:status,:complaint_id)
 end
 end

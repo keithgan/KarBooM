@@ -34,12 +34,5 @@ class OfficersController < ApplicationController
 		@complaints = Complaint.where(status: "0")
 		render partial: '/officers/appeals_tab'
     end
-    
-    def carousel_approve
-        x
-    end
 
-    def carousel_reject
-        x
-    end
 end
