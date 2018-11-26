@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resources :complaints do
     post "/carousel_approve", to: 'complaints#carousel_approve'
     post "/carousel_reject", to: 'complaints#carousel_reject'
-
+    post "/reject", to: "complaints#reject", as: 'reject'
     resources :fines
   end
     

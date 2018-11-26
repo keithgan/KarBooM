@@ -1,15 +1,14 @@
 class ComplaintsController < ApplicationController
 	skip_before_action :verify_authenticity_token, :only => [:create]
 
-
 	def index
-		@complaints=Complaint.all
-		@users=User.all
+		@complaints = Complaint.all
+		@users = User.all
 	end
 
 	def new
-		@users= User.all
-		@complaint= Complaint.new
+		@users = User.all
+		@complaint = Complaint.new
 	end
 
 	def show
@@ -100,9 +99,30 @@ class ComplaintsController < ApplicationController
 		render partial: '/officers/carousel_reject'
 	end	
 
-private
+	def reject
+		@complaint = Complaint.find(get_params[:complaint_id])
+		@complaint.status = 2
+		
+		if @complaint.save
+				redirect_to officer_path(current_officer)
+		else
+				redirect_to complaint_path(@complaint.id)
+		end
+	end
+	
+	private
 
-def get_params
-	params.permit(:latitude,:longitude,:img,:comment,:avatar,:number_plate,:offence,:status,:complaint_id)
-end
+	def get_params
+		params.permit(
+				:latitude,
+				:longitude,
+				:img,
+				:comment,
+				:avatar,
+				:number_plate,
+				:offence,
+				:status,
+				:complaint_id
+			)
+	end
 end

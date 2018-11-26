@@ -1,0 +1,42 @@
+<h1> Fine </h1>
+
+<div class="container">
+	<table style="width:100%">
+		<tr>
+			<td>Number Plate: </td>
+			<td><%=@complaint.number_plate%></td>
+		</tr>
+		<tr>
+			<td>Address:</td>
+			<td><%=@complaint.address%></td>
+		</tr>
+        <tr>
+            <td>Date:</td>
+            <td><%=@fine.date%></td>
+        </tr>
+        <tr>
+            <td>Time:</td>
+            <td><%=@fine.time%></td>
+        </tr>
+		<tr>
+			<td>Offence:</td>
+			<td><%=@fine.offence%></td>
+		</tr>
+		<tr>
+			<td>Fine:</td>
+			<td>RM <%=@fine.amount%></td>
+		</tr>		
+		<tr>
+			<td>Given by:</td>
+			<td><%=current_officer%></td>
+		</tr>
+
+		<tr>
+			<td>Image Proof:</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><%=image_tag @complaint.avatar.url , width: "500"%></td>
+		</tr>
+		</table>
+</div>
