@@ -5,3 +5,10 @@
 <%= link_to "Create Officer", new_officer_registration_path %>
 <%= link_to "Sign In", new_officer_session_path %>
 <%= link_to "Sign Out", destroy_officer_session_path, method: :delete %>
+
+
+<%= form_tag("/welcome/numplate", method: "post") do %>
+  <%= label_tag(:avatar, "Upload File") %><br/>
+ <%=file_field(:avatar, accept:'image/*', id:"file-input")%></td>
+  <%= submit_tag("Upload") %>
+<% end %>

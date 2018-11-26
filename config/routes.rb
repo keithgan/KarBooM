@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :officers
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
+  post 'welcome/numplate', to: 'welcome#numplate'
+  
   get "/complaints_tab", to: 'officers#complaints_tab'
   get "/appeals_tab", to: 'officers#appeals_tab'
   get "/fines_tab", to: 'officers#fines_tab'
@@ -45,5 +47,7 @@ Rails.application.routes.draw do
   get '/fines/:id/braintree/new', to: 'braintree#new', as: 'new_braintree_payment'
   post '/fines/:id/braintree/checkout', to: 'braintree#checkout', as: 'fine_amount_braintree_checkout'
   post '/fines/:id/appeal', to: 'fines#appeal', as: "appeal"
+
+
 
 end

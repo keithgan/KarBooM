@@ -9,6 +9,7 @@ class FinesController < ApplicationController
     end
 
     def create
+        byebug
         @complaint = Complaint.find(params[:complaint_id])
         @fine = Fine.create_from_complaint(@complaint, current_officer)
         if @fine.save

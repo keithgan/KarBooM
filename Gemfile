@@ -77,3 +77,12 @@ gem 'mini_magick'
 # To find address given coordinates
 gem 'geocoder'
 
+gem 'multipart-post'
+
+# OCR space
+
+gem 'ocr_space'
+
+
+# Figaro 
+gem "figaro"
