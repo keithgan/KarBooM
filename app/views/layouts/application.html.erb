@@ -36,71 +36,70 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/fines">Check Fines<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/complaints/new">Make Complaint<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/complaints">Complaint History<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/users/<%=current_user.id%>">Profile<span class="sr-only">(current)</span></a>  
-        </li>
-        <li class="nav-item">
-          <div class="nav-link">
-            <%= link_to t(".sign_out"), destroy_user_session_path, method: :delete %>
-          </div>
-        </li>
-    <% elsif officer_signed_in? %>
-      <% if current_officer.superadmin? %>
-        <li class="nav-item active">
-          <div class="nav-link">
-            <%= link_to t(".officer_list"), officers_path %>
-          </div>
-        </li>
-        <li class="nav-item">
-          <div class="nav-link">
-            <%= link_to t(".create_officer"), new_officer_registration_path %>  
-          </div>
-        </li>
-        <li class="nav-item">
-          <div class="nav-link">
-            <%= link_to t(".edit_officer"), edit_officer_registration_path %>  
-          </div>
-        </li>
-        <li class="nav-item">
-          <div class="nav-link">
-            <%= link_to t(".profile"), officer_path(current_officer) %>
-          </div>
-        </li>
-      <% end %>
-        <li class="nav-item">
-          <div class="nav-link">
-            <%= link_to t(".profile"), officer_path(current_officer) %>
-          </div>
-        </li>
-        <li class="nav-item">
-          <div class="nav-link">
-            <%= link_to t(".sign_out"), destroy_officer_session_path, method: :delete %>
-          </div>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <a class="nav-link" href="/users/sign_up">Sign Up<span class="sr-only">(current)</span></a>     
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/users/sign_in">Sign In<span class="sr-only">(current)</span></a>     
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/officers/sign_in">Officer<span class="sr-only">(current)</span></a>    
-        </li>    
-      <% end %>
+
+    <% if user_signed_in? %>
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="/fines">Check Fines<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+           <a class="nav-link" href="/complaints/new">Make Complaint<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+         <a class="nav-link" href="/complaint_history">Complaint History<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+         <a class="nav-link" href="/users/<%=current_user.id%>">Profile<span class="sr-only">(current)</span></a>  
+      </li>
+      <li class="nav-item">
+        <div class="nav-link">
+          <%= link_to t(".sign_out"), destroy_user_session_path, method: :delete %>
+        </div>
+      </li>
+
+   <% elsif officer_signed_in? %>
+    <% if current_officer.superadmin? %>
+      <li class="nav-item active">
+        <div class="nav-link">
+          <%= link_to t(".officer_list"), officers_path %>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="nav-link">
+          <%= link_to t(".create_officer"), new_officer_registration_path %>  
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="nav-link">
+          <%= link_to t(".edit_officer"), edit_officer_registration_path %>  
+        </div>
+      </li>
+
+    <% end %>
+      <li class="nav-item">
+        <div class="nav-link">
+          <%= link_to t(".profile"), officer_path(current_officer) %>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="nav-link">
+          <%= link_to t(".sign_out"), destroy_officer_session_path, method: :delete %>
+        </div>
+
+    <% else %>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/sign_up">Sign Up<span class="sr-only">(current)</span></a>     
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/sign_in">Sign In<span class="sr-only">(current)</span></a>     
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/officers/sign_in">Officer<span class="sr-only">(current)</span></a>    
+      </li>    
+    <% end %>
+
     </ul>
   </div>
 </nav>

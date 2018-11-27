@@ -5,45 +5,45 @@
 <div class="container">
 	<table style="width:100%">
 		<tr>
-			<td>Complaint filed by:</td>
+			<td><strong>Complaint filed by:</strong></td>
 			<td><%=@complaint.user.full_name%> | ID: <%=@complaint.user.id%></td>
 		</tr>
 		<tr>
-			<td>Offender:</td>
+			<td><strong>Offender:</strong></td>
 			<%offender=@users.find_by(id:@complaint.offender_id)%>
 			<td><%=offender.full_name%> | ID: <%=@complaint.offender_id%> </td>
 		</tr>
 		<tr>
-			<td>Coordinates: </td>
+			<td><strong>Coordinates:</strong></td>
 			<td><%=@complaint.latitude%>,<%=@complaint.longitude%></td>
 		</tr>
 		<tr>
-			<td>Address:</td>
+			<td><strong>Address:</strong></td>
 			<td><%=@complaint.address%></td>
 		</tr>
 		<tr>
-			<td>Number Plate: </td>
+			<td><strong>Number Plate:</strong></td>
 			<td><%=@complaint.number_plate%></td>
 		</tr>
 		<tr>
-			<td>Offence:</td>
+			<td><strong>Offence:</strong></td>
 			<td><%=@complaint.offence%></td>
 		</tr>
 		<tr>
-			<td>Fine:</td>
+			<td><strong>Fine:</strong></td>
 			<td>RM <%=@complaint.fine%></td>
 		</tr>		
 		<tr>
-			<td>Comment:</td>
+			<td><strong>Comment:</strong></td>
 			<td><%=@complaint.comment%></td>
 		</tr>
 
 		<tr>
-			<td>Image Proof:</td>
+			<td><strong>Image Proof:</strong></td>
 		</tr>
 		<tr>
 			<td></td>
-			<td><%=image_tag @complaint.avatar.url , width: "500"%></td>
+			<td ><%=image_tag @complaint.avatar.url, class: "responsive"%></td>
 		</tr>
 		</table>
 </div>

@@ -17,34 +17,35 @@ class ComplaintsController < ApplicationController
 	end
 
 	def create
-		
 		complaint= current_user.complaints.new(get_params)
+		byebug
+
 		# Checks offence and assign fine
 		if (get_params[:offence] == "1") 
 		    offence = "Double Parking with no passenger inside the car"
-		    fine = 100
+		    fine_amount = 100
 		 elsif (get_params[:offence] == "2") 
 		    offence = "Not parking entirely inside the box"
-		    fine = 30
+		    fine_amount = 30
 		 elsif (get_params[:offence] == "3") 
 		    offence = "Parking in OKU without valid disabled permit"
-		    fine = 200
+		    fine_amount = 200
 		 elsif (get_params[:offence] == "4") 
 		    offence = "Parking at a bus station or a bus stand"
-		    fine = 100
+		    fine_amount = 100
 		 elsif (get_params[:offence] == "5") 
 		    offence = "Parking on a yellow/white line"
-		    fine = 80
+		    fine_amount = 80
 		 elsif (get_params[:offence] == "6") 
 		    offence = "Parking somewhere which obstructs traffic"
-		    fine = 250
+		    fine_amount = 250
 		 else
 		     offence = "nil"
-		     fine = nil
+		     fine_amount = nil
 		 end
 
 		complaint.update(offence:offence)
-		complaint.update(fine:fine)
+		complaint.update(fine_amount:fine_amount)
 
 		# Get location and assign address
 		if Geocoder.search([get_params[:latitude],get_params[:longitude]]) !=nil
@@ -69,11 +70,22 @@ class ComplaintsController < ApplicationController
 
 	end
 
+	def complaint_history
+		@complaints = Complaint.all
+	end
+
 	# Ajax for Carousel Approve/Reject on Officer Show Page's Carousel Cards
 	def carousel_approve
 		@complaint_status = Complaint.find(get_params[:complaint_id])
 		@complaint_status.status = 1
 		@complaint_status.save
+	def complaint_history
+		@complaints=Complaint.all
+		@users=User.all
+	end
+
+
+private
 
 		@next_index = params[:index].to_i + 1
 		@index = params[:index].to_i
