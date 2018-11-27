@@ -4,7 +4,7 @@
     }
 </style>
 
-<div class="container-fluid p-0 bg-light">
+<div class="container-fluid p-0 bg-dark">
     <div class="row">
         <div class="col-md-2 p-0">
             <header class="nav-down responsive-nav d-md-none">
@@ -30,8 +30,8 @@
             </header>
 
             <div class="sidebar-navigation d-none d-md-block">
-                <div class="logo">
-                    <p id="#"><em>Hello!</em></p>
+                <div class="logo container-fluid bg-dark img-fluid p-0">
+                    <img class="img-fluid" src="https://m.media-amazon.com/images/M/MV5BMTM0NzYzNDgxMl5BMl5BanBnXkFtZTcwMDg2MTMyMw@@._V1_.jpg">
                 </div>
                 <nav>
                     <ul>
@@ -78,35 +78,37 @@
                 </nav>
             </div>
         </div>
-        <div class="col-md-10 p-0 bg-secondary">
+        <div class="col-md-10 p-0 bg-dark">
             <div id="officer_option_tabs">
-                <div class="justify-content-center" id="view_all">
-                    <div class="container text-center bg-secondary">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Work</button>
-                    </div>
-                    </br>
-                    <div id="option_tabs" class="bg-secondary">
-                        <div class="row">
-                            <div class="col-4 justify-content-around" id="complaints-tab">
-                                <%= form_with :class =>"d-flex justify-content-around", url: complaints_tab_path, method: :get do |form| %>
-                                    <%= form.submit "Complaints", :class => 'btn btn-warning' %>
-                                <% end %>
-                            </div>
-                            <div class="col-4 justify-content-around" id="appeals-tab">
-                                <%= form_with :class =>"d-flex justify-content-around", url: appeals_tab_path, method: :get do |form| %>
-                                    <%= form.submit "Appeals", :class => 'btn btn-success' %>
-                                <% end %>
-                            </div>
-                            <div class="col-4 justify-content-around" id="fines-tab">
-                                <%= form_with :class =>"d-flex justify-content-around", url: fines_tab_path, method: :get do |form| %>
-                                    <%= form.submit "Fines", :class => 'btn btn-danger' %>
-                                <% end %>
+                <div class="justify-content-center sticky-top">
+                    <div class="bg-dark pb-2" id="sticky-view">
+                        <div class="container text-center bg-dark p-2">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModalCenter">Work</button>
+                        </div>
+                        </br>
+                        <div id="option_tabs" class="bg-dark">
+                            <div class="row">
+                                <div class="col-4 justify-content-around" id="complaints-tab">
+                                    <%= form_with :class =>"d-flex justify-content-around", url: complaints_tab_path, method: :get do |form| %>
+                                        <%= form.submit "Complaints", :class => 'btn btn-warning' %>
+                                    <% end %>
+                                </div>
+                                <div class="col-4 justify-content-around" id="appeals-tab">
+                                    <%= form_with :class =>"d-flex justify-content-around", url: appeals_tab_path, method: :get do |form| %>
+                                        <%= form.submit "Appeals", :class => 'btn btn-warning' %>
+                                    <% end %>
+                                </div>
+                                <div class="col-4 justify-content-around" id="fines-tab">
+                                    <%= form_with :class =>"d-flex justify-content-around", url: fines_tab_path, method: :get do |form| %>
+                                        <%= form.submit "Fines", :class => 'btn btn-warning' %>
+                                    <% end %>
+                                </div>
                             </div>
                         </div>
                     </div>
                     </br>
-                    <div class="container-fluid p-0 pr-2 bg-light">
+                    <div class="container-fluid p-0 pr-0 bg-light">
                         <table class="table table-hover" id="officer-work-table">
                             <%= render partial: 'officers/complaints' %>
                         </table>

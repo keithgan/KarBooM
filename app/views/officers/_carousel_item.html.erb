@@ -1,6 +1,6 @@
 <% if index == 0 %>
     <div class="carousel-item active" id="carousel-card-<%= index %>">
-        <div class="card bg-light"> 
+        <div class="card text-white bg-dark"> 
             <div class="card-header">
                 Report ID# <%= list.id %>
             </div>
@@ -45,7 +45,7 @@
     </div>
 <% else %>
     <div class="carousel-item" id="carousel-card-<%= index %>">
-        <div class="card bg-light">
+        <div class="card text-white bg-dark">
             <div class="card-header">
                 Report ID# <%= list.id %>
             </div>
@@ -55,7 +55,7 @@
                     <thead>
                         <tr>
                             <th scope="col"></th>
-                            <th style="text-align: left" scope="col">Details</th>
+                            <th class="pl-0 pt-0" style="text-align: left" scope="col">Details</th>
                         </tr>
                     </thead>
                     <tbody>
