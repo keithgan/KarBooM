@@ -87,3 +87,24 @@ color: white;
 .links a{
 margin-left: 4px;
 }
+
+// Mel added stuff beyond this point
+th, td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid lightgrey;
+}
+
+.check-num-plate
+{
+	background-color: rgba(0,0,0,0.3);
+	padding: 20px;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.padding-10
+{
+	padding: 10px;
+
+}

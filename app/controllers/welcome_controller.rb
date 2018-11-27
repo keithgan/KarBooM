@@ -7,7 +7,6 @@ skip_before_action :verify_authenticity_token, :only => [:numplate]
   end
 
   def numplate
-  	byebug
   	@users = User.all
 
   	file_upload=get_params[:avatar].tempfile
