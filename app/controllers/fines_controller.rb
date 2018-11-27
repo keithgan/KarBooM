@@ -27,6 +27,10 @@ class FinesController < ApplicationController
             redirect_to all_fines_path
         end
     end
+
+    def my_fines
+        @fines = current_user.fines
+    end
    
     private
 

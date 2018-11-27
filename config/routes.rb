@@ -49,4 +49,6 @@ Rails.application.routes.draw do
   post '/fines/:id/braintree/checkout', to: 'braintree#checkout', as: 'fine_amount_braintree_checkout'
   post '/fines/:id/appeal', to: 'fines#appeal', as: "appeal"
 
+  get "/myfines" => "fines#my_fines", as: "my_fines"
+
 end
