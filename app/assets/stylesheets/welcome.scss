@@ -121,7 +121,7 @@ th, td {
 
 .check-num-button
 {
-	background-color: rgba(0,0,0,0.8);
+	background-color: rgba(255,255,255,0.8);
 	border-radius: 10px;
 	width: 120px;
 	text-align: center;
@@ -134,9 +134,10 @@ th, td {
 	width:90%;
 }
 
-.text-shadow-welcome{
-	text-shadow: 3px 3px 20px white;
-
+.welcome-shadow
+{
+	text-shadow: 2px 2px 5px lightgrey;
 }
+
 
 
