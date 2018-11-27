@@ -1,39 +1,92 @@
 <% if index == 0 %>
     <div class="carousel-item active" id="carousel-card-<%= index %>">
-        <div class="card"> 
+        <div class="card bg-light"> 
             <div class="card-header">
                 Report ID# <%= list.id %>
             </div>
             <img class="card-img-top img-fluid" src="<%= list.avatar %>"/>
             <div class="card-body">
-                <h5 class="card-title"><%= list.number_plate %></h5>
-                <p class="card-text"><%= list.offence %></p>
-                <%= form_with url: complaint_carousel_approve_path(:complaint_id=>list.id, :index => index), method: :post do |form| %>
-                    <%= form.submit "Approve" %>
-                <% end %>
-                <%= form_with url: complaint_carousel_reject_path(:complaint_id=>list.id, :index => index), method: :post do |form| %>
-                    <%= form.submit "Reject" %>
-                <% end %>
+                <table class="table table-borderless table-hover p-0">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th class="pl-0 pt-0" style="text-align: left" scope="col">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="pl-0 pt-0 pr-1" style="text-align: left" scope="row">No. Plate</th>
+                            <td class="pl-0 pt-0" style="text-align: left"><%= list.number_plate %></td>
+                        </tr>
+                        <tr>
+                            <th class="pl-0 pt-0 pr-1" style="text-align: left" scope="row">Offence</th>
+                            <td class="pl-0 pt-0" style="text-align: left"><%= list.offence %></td>
+                        </tr>
+                        <tr>
+                            <th class="pl-0 pt-0 pr-1" style="text-align: left" scope="row">Comment</th>
+                            <td class="pl-0 pt-0" style="text-align: left"><%= list.comment %></td>
+                        </tr>
+                        <tr>
+                            <th class="pl-0 pt-0 pr-1" style="text-align: left" scope="row">Address</th>
+                            <td class="pl-0 pt-0" style="text-align: left"><%= list.address %></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="modal-footer">
+                    <%= form_with url: complaint_carousel_approve_path(:complaint_id=>list.id, :index => index), method: :post do |form| %>
+                        <%= form.submit "Approve", :class => 'btn btn-success d-inline' %>
+                    <% end %>
+                    <%= form_with url: complaint_carousel_reject_path(:complaint_id=>list.id, :index => index), method: :post do |form| %>
+                        <%= form.submit "Reject", :class => 'btn btn-danger d-inline' %>
+                    <% end %>
+                </div>
             </div>
         </div>
     </div>
 <% else %>
     <div class="carousel-item" id="carousel-card-<%= index %>">
-        <div class="card">
+        <div class="card bg-light">
             <div class="card-header">
                 Report ID# <%= list.id %>
             </div>
             <img class="card-img-top img-fluid" src="<%= list.avatar %>"/>
             <div class="card-body">
-                <h5 class="card-title"><%= list.number_plate %></h5>
-                <p class="card-text"><%= list.offence %></p>
-                <%= form_with url: complaint_carousel_approve_path(:complaint_id=>list.id, :index => index), method: :post do |form| %>
-                    <%= form.submit "Approve" %>
-                <% end %>
-                <%= form_with url: complaint_carousel_reject_path(:complaint_id=>list.id, :index => index), method: :post do |form| %>
-                    <%= form.submit "Reject" %>
-                <% end %>
+                <table class="table table-borderless table-hover p-0">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th style="text-align: left" scope="col">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="pl-0 pt-0 pr-1" style="text-align: left" scope="row">No. Plate</th>
+                            <td class="pl-0 pt-0" style="text-align: left"><%= list.number_plate %></td>
+                        </tr>
+                        <tr>
+                            <th class="pl-0 pt-0 pr-1" style="text-align: left" scope="row">Offence</th>
+                            <td class="pl-0 pt-0 pr-1" style="text-align: left"><%= list.offence %></td>
+                        </tr>
+                        <tr>
+                            <th class="pl-0 pt-0 pr-1" style="text-align: left" scope="row">Comment</th>
+                            <td class="pl-0 pt-0" style="text-align: left"><%= list.comment %></td>
+                        </tr>
+                        <tr>
+                            <th class="pl-0 pt-0 pr-1" style="text-align: left" scope="row">Address</th>
+                            <td class="pl-0 pt-0 pr-1" style="text-align: left"><%= list.address %></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="modal-footer">
+                    <%= form_with url: complaint_carousel_approve_path(:complaint_id=>list.id, :index => index), method: :post do |form| %>
+                        <%= form.submit "Approve", :class => 'btn btn-success d-inline' %>
+                    <% end %>
+                    <%= form_with url: complaint_carousel_reject_path(:complaint_id=>list.id, :index => index), method: :post do |form| %>
+                        <%= form.submit "Reject", :class => 'btn btn-danger d-inline' %>
+                    <% end %>
+                </div>
             </div>
         </div>
     </div>
 <% end %>
+
