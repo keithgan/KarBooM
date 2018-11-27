@@ -1,0 +1,35 @@
+<div class="container">
+	<h2>Your Fine History</h2>
+	<hr/>
+
+	<div class= "card-deck d-flex justify-content-between">
+		<% @fines.each do |fine| %>
+			<%if c.user_id == current_user.id%>
+				<div class="row">
+					<div class="card border-dark mb-4 mr-2" style="width: 13rem; text-align:left">
+						<div class="card-body">
+							<h5 class="card-title">Car No: <%= fine.complaint.number_plate %></h5>
+							<h5 class="card-title">Location: <%= fine.location %></h5>
+							<h5 class="card-title">Date: <%= fine.complaint.created_at.strftime("%d/%m/%Y")%></h5>
+							<h5 class="card-title">Time: <%= fine.complaint.created_at.strftime("%H:%M:%S") %></h5>
+                			<h5 class="card-title">Offence: <%= fine.offence %></h5>
+							<h5 class="card-title">Fine: RM <%= fine.complaint.fine_amount %></h5>
+							<h5 class="card-title">Status: <%= fine.status.capitalize %></h5>
+							<%=link_to 'View', complaint_path(c) %>
+                            <% if fine.status == 'unpaid' %>
+                                <td><%=link_to 'Make Payment', new_braintree_payment_path(fine) %></td>
+                                <td>
+                                <%= form_with url: appeal_path(fine), method: :post do |form| %>
+                                    <%= form.submit "Appeal" %>
+                                <% end %>
+                                </td>
+                            <% end %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+</div>
+
+
