@@ -1,20 +1,24 @@
 <thead>
-    <tr class="table-info">
-    <th scope="col">#</th>
-    <th scope="col">Location</th>
-    <th scope="col">Offence</th>
-    <th scope="col">Amount</th>
-    <th scope="col">Complaint Id</th>
+    <tr class="bg-dark">
+    <th class="text-warning" scope="col">#</th>
+    <th class="text-warning" scope="col">No. Plate</th>
+    <th class="text-warning" scope="col">Date</th>
+    <th class="text-warning" scope="col">Location</th>
+    <th class="text-warning" scope="col">Offence</th>
+    <th class="text-warning" scope="col">Amount</th>
+    <th class="text-warning" scope="col">Status</th>
     </tr>
 </thead>
 <tbody>
     <% @fines.each do |list| %>
         <tr>
         <th scope="row"><%= list.id %></th>
+        <td><%= list.complaint.number_plate %></td>
+        <td><%= list.date %></td>
         <td><%= list.location %></td>
         <td><%= list.offence %></td>
         <td><%= list.amount %></td>
-        <td><%= list.complaint_id %></td>
+        <td> <%= link_to t("#{list.status}"), show_fine_path(list) %></td>
         </tr>
     <% end %>
 </tbody>

@@ -6,4 +6,5 @@ class Officer < ApplicationRecord
   paginates_per 50
   enum role: {officer: 0, superadmin: 1}
   has_many :fines
+  validates :officer_locality, format: { with: /\A\d{5}\z/ }
 end

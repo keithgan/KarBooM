@@ -2,7 +2,7 @@ class Fine < ApplicationRecord
     belongs_to :user
     belongs_to :complaint
     belongs_to :officer
-    enum status: { unpaid: 0, paid: 1, appealed: 2 }
+    enum status: { Unpaid: 0, Paid: 1, Appealed: 2 }
 
     def self.create_from_complaint(complaint, officer)
         fine = Fine.new

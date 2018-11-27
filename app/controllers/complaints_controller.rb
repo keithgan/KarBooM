@@ -78,34 +78,30 @@ class ComplaintsController < ApplicationController
 		@complaint_status = Complaint.find(get_params[:complaint_id])
 		@complaint_status.status = 1
 		@complaint_status.save
+		@next_index = params[:index].to_i + 1
+		@index = params[:index].to_i
+		
+		@complaints = Complaint.where(status: "0")
+		
+		@complaint = Complaint.find(get_params[:complaint_id])
+		fine = Fine.create_from_complaint(@complaint, current_officer)
+		fine.save
+		render partial: '/officers/carousel_approve'
+	end
+
 	def complaint_history
 		@complaints=Complaint.all
 		@users=User.all
 	end
 
-
-private
-
-		@next_index = params[:index].to_i + 1
-		@index = params[:index].to_i
-
-		@complaints = Complaint.where(status: "0")
-
-		@complaint = Complaint.find(get_params[:complaint_id])
-		fine = Fine.create_from_complaint(@complaint, current_officer)
-		fine.save
-
-		render partial: '/officers/carousel_approve'
-	end
- 
 	def carousel_reject
 		@complaint_status = Complaint.find(get_params[:complaint_id])
 		@complaint_status.status = 2
 		@complaint_status.save
-
+	
 		@next_index = params[:index].to_i + 1
 		@index = params[:index].to_i
-
+	
 		@complaints = Complaint.where(status: "0")
 		render partial: '/officers/carousel_reject'
 	end	
