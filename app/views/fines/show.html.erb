@@ -38,5 +38,9 @@
 			<td></td>
 			<td><%=image_tag @fine.complaint.avatar.url , width: "500"%></td>
 		</tr>
+		<tr>
+			<td>Status:</td>
+			<td><%=@fine.status.capitalize%></td>
+		</tr>
 		</table>
 </div>

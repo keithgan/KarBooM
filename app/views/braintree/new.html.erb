@@ -1,8 +1,10 @@
 <h1>Pay now</h1>
 
+<h5> Amount to pay: RM <%= @fine.amount %> </h5>
+
 <div class="demo-frame">
 
-  <%= form_for :checkout_form, url: braintree_checkout_path, html: { id: "cardForm"} do |form| %>
+  <%= form_for :checkout_form, url: fine_amount_braintree_checkout_path(@fine.id), html: { id: "cardForm"} do |form| %>
 
     <%= form.label :card_number, "Credit Card Number", html: {class: "hosted-fields--label"} %>
     <div id="card-number" class="hosted-field"></div>

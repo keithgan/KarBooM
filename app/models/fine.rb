@@ -10,7 +10,7 @@ class Fine < ApplicationRecord
         fine.time = Time.now.strftime("%H:%M:%S")
         fine.location = complaint.address 
         fine.offence = complaint.offence 
-        fine.amount = complaint.fine
+        fine.amount = complaint.fine_amount
         fine.complaint_id = complaint.id
         fine.set_recipients(complaint, officer)
         return fine
