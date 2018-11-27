@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_23_031034) do
+ActiveRecord::Schema.define(version: 2018_11_27_035231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,11 +25,11 @@ ActiveRecord::Schema.define(version: 2018_11_23_031034) do
     t.string "number_plate"
     t.string "avatar"
     t.integer "user_id"
-    t.integer "fine"
     t.string "address"
     t.string "postal_code"
     t.integer "offender_id"
     t.integer "status", default: 0
+    t.integer "fine_amount"
     t.index ["number_plate"], name: "index_complaints_on_number_plate"
     t.index ["offender_id"], name: "index_complaints_on_offender_id"
   end
