@@ -44,10 +44,9 @@ Rails.application.routes.draw do
   get "/fines", to: "fines#index", as: "all_fines"
   get "/fines/:id" , to: "fines#show", as: "show_fine"
 
+  get "/welcome/check", to: "welcome#check", as: "welcome_check"
   get '/fines/:id/braintree/new', to: 'braintree#new', as: 'new_braintree_payment'
   post '/fines/:id/braintree/checkout', to: 'braintree#checkout', as: 'fine_amount_braintree_checkout'
   post '/fines/:id/appeal', to: 'fines#appeal', as: "appeal"
-
-
 
 end

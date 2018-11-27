@@ -1,10 +1,14 @@
 class WelcomeController < ApplicationController
 require 'base64'
-skip_before_action :verify_authenticity_token, :only => [:numplate]
+skip_before_action :verify_authenticity_token, :only => [:numplate,:check]
 
 
   def index
   end
+
+  def check
+  end
+
 
   def numplate
   	@users = User.all

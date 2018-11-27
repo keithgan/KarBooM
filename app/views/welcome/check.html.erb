@@ -1,0 +1,81 @@
+<body class="welcome-page-background">
+
+
+<div class="container check-num-plate">
+	<div class="container align-center">
+	    <h4 id="number_plate_display">Look up a user through numberplate</h4> 
+	</div>
+
+	<div class = "padding-10 align-center">
+	  <%=file_field(:avatar, accept:'image/*', id:"file-input" )%>
+	  <button type="button" onclick="sendPhoto()" class="btn btn-primary">Submit</button><br/>
+	</div>
+
+	<div class = "padding-10 align-center">
+	  <img id="blah" src="#" alt="your image"  />
+	</div>
+
+	<hr/>
+	<!-- innerhtml of this changes with AJAX -->
+	<div class= "align-center">
+		<table id="demo"></table>
+	</div>
+</div>
+
+<script>
+
+var input = document.querySelector('input[type=file]'); 
+
+	function sendPhoto(){
+
+		// on click submit, this code display image on screen
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .height(200);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+       // Code after this part does numberplate recognition function
+
+		// image file
+		var file = input.files[0];
+		// create form for sending to controller
+		var form = new FormData()
+		xhr = new XMLHttpRequest();
+
+		xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+
+            alert("Its done! : )")
+            // get json and covert back to array
+            var response = JSON.parse(this.responseText)
+
+            // display first item in array which is the number plate
+            document.getElementById("number_plate_display").innerHTML = "Number Plate: " + response[0]
+            // table
+            var table ="<tr><th>List</th><th>Details</th></tr>";
+            // if response array is longer than 1 means it carries other infomations
+            if (response.length >1){
+            var array= ["No.Plate", "Driver Full Name", "Drivers License","Email","Number of Fines"];
+              for (i = 0; i <response.length; i++) { 
+				table += "<tr><td>" + array[i]+ "</td><td>" + response[i] + "</td></tr>";
+				}
+				document.getElementById("demo").innerHTML = table;
+			}
+           
+         }
+         }
+
+       	form.append('avatar', file);
+        xhr.open('post', 'numplate', true);
+		xhr.send(form)
+    
+
+	}
+</script>
+</body>

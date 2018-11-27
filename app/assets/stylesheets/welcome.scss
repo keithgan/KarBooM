@@ -97,14 +97,34 @@ th, td {
 
 .check-num-plate
 {
-	background-color: rgba(0,0,0,0.3);
+	background-color: rgba(255,255,255,0.8);
 	padding: 20px;
 	border-radius: 10px;
-	text-align: center;
+	width:50%;
 }
 
 .padding-10
+{	padding: 10px; }
+
+.align-center
+{	text-align: center;}
+
+.welcome-page-background
 {
-	padding: 10px;
+	background-image: url('https://brightcove04pmdo-a.akamaihd.net/5104226627001/5104226627001_5230061447001_5203619434001-vs.jpg?pubId=5104226627001&videoId=5203619434001');
+}
+
+.float-right
+{
+	float:right;
+}
+
+.check-num-button
+{
+	background-color: rgba(255,255,255,0.6);
+	border-radius: 10px;
+	width: 120px;
+	text-align: center;
+	padding:8px;
 
 }
