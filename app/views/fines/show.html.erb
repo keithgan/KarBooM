@@ -3,43 +3,43 @@
 <div class="container">
 	<table style="width:100%">
 		<tr>
-			<td>Number Plate: </td>
+			<td><strong>Number Plate:</strong></td>
 			<td><%=@fine.complaint.number_plate%></td>
 		</tr>
 		<tr>
-			<td>Location:</td>
+			<td><strong>Location:</strong></td>
 			<td><%=@fine.complaint.address%></td>
 		</tr>
         <tr>
-            <td>Date:</td>
+            <td><strong>Date:</strong></td>
             <td><%=@fine.date%></td>
         </tr>
         <tr>
-            <td>Time:</td>
+            <td><strong>Time:</strong></td>
             <td><%=@fine.time%></td>
         </tr>
 		<tr>
-			<td>Offence:</td>
+			<td><strong>Offence:</strong></td>
 			<td><%=@fine.offence%></td>
 		</tr>
 		<tr>
-			<td>Fine:</td>
+			<td><strong>Fine:</strong></td>
 			<td><%=@fine.amount%></td>
 		</tr>		
 		<tr>
-			<td>Given by:</td>
+			<td><strong>Given by:</strong></td>
 			<td><%=@fine.officer.full_name%></td>
 		</tr>
 
 		<tr>
-			<td>Image Proof:</td>
+			<td><strong>Image Proof:</strong></td>
 		</tr>
 		<tr>
 			<td></td>
-			<td><%=image_tag @fine.complaint.avatar.url , width: "500"%></td>
+			<td><%=image_tag @fine.complaint.avatar.url , class: "responsive"%></td>
 		</tr>
 		<tr>
-			<td>Status:</td>
+			<td><strong>Status:</strong></td>
 			<td><%=@fine.status.capitalize%></td>
 		</tr>
 		</table>
