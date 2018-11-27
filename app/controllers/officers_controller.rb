@@ -12,6 +12,7 @@ class OfficersController < ApplicationController
     end
     # Officer Profile Page
     def show
+        @officer = Officer.find(params[:id])
         @complaints = Complaint.where(status: "0")
         @appeals = Fine.where(status: "2")
         @fines = Fine.all

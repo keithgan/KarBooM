@@ -17,6 +17,15 @@ class FinesController < ApplicationController
             redirect_to complaint_path(@complaint.id)
         end
     end
+
+    def appeal
+        @fine = Fine.find(params[:id])
+        @fine.status = 2
+
+        if @fine.save
+            redirect_to all_fines_path
+        end
+    end
    
     private
 
