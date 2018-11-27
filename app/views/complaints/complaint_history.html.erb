@@ -1,12 +1,12 @@
 <div class="container">
-
-<h1>Your Complaint History</h1>
+<h2>Your Complaint History</h2>
 <hr/>
 
+<div style="overflow-x:auto">
 	<%@complaints.each_with_index do |c,i|%>
 	<%if c.user_id == current_user.id%>
 
-		<table style="width:100%">
+		<table style="width:100%" class="width-check-num">
 		<tr>
 			<td>Coordinates: </td>
 			<td><%=c.latitude%>,<%=c.longitude%></td>
@@ -19,7 +19,6 @@
 		<tr>
 			<td>Number Plate: </td>
 			<td><%=c.number_plate%></td>
-			<td><%=c.id%></td>
 		</tr>
 		<tr>
 			<td>Offence:</td>
@@ -44,6 +43,7 @@
 		<hr/>
 	<%end%>
 	<%end%>
+</div>
 		
 </div>
 

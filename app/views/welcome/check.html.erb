@@ -1,7 +1,7 @@
 <body class="welcome-page-background">
 
 
-<div class="container check-num-plate">
+<div class="container check-num-plate width-check-num">
 	<div class="container align-center">
 	    <h4 id="number_plate_display">Look up a user through numberplate</h4> 
 	</div>
@@ -63,7 +63,7 @@ var input = document.querySelector('input[type=file]');
             if (response.length >1){
             var array= ["No.Plate", "Driver Full Name", "Drivers License","Email","Number of Fines"];
               for (i = 0; i <response.length; i++) { 
-				table += "<tr><td>" + array[i]+ "</td><td>" + response[i] + "</td></tr>";
+				table += "<tr><td>" + array[i]+ ":" + "</td><td>" + response[i] + "</td></tr>";
 				}
 				document.getElementById("demo").innerHTML = table;
 			}
