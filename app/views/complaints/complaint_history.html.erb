@@ -2,17 +2,19 @@
 	<h2>Your Complaint History</h2>
 	<hr/>
 
-	<div class= "card-deck d-flex justify-content-between">
+	<div class= "card-deck d-flex">
 		<% @complaints.each_with_index do |c, i| %>
 			<%if c.user_id == current_user.id%>
-				<div class="row">
+				<div class="d-inline-block">
 					<div class="card border-dark mb-4 mr-2" style="width: 13rem; text-align:left">
 						<div class="card-body">
 							<h5 class="card-title">Car No: <%= c.number_plate %></h5>
 							<h5 class="card-title">Date: <%= c.created_at.strftime("%d/%m/%Y")%></h5>
 							<h5 class="card-title">Time: <%= c.created_at.strftime("%H:%M:%S") %></h5>
 							<h5 class="card-title">Fine: RM <%= c.fine_amount %></h5>
-							<%=link_to 'View', complaint_path(c) %>
+							<div style="text-align:center">
+								<%=link_to 'View', complaint_path(c) %>
+							</div>
 						</div>
 					</div>
 				</div>

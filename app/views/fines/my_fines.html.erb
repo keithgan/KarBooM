@@ -1,48 +1,32 @@
 <div class="container">
-	<h1>Fine History</h1>
+	<h2>Your Fine History</h2>
 	<hr/>
-		<%@fines.each do |fine|%>
-			<table style="width:100%">
-			<tr>
-				<td>Car No: </td>
-			    <td><%=fine.complaint.number_plate%></td>
-				<td><%=link_to 'View', show_fine_path(fine) %></td>
-                <% if fine.status == 'unpaid' %>
-                	<td><%=link_to 'Make Payment', new_braintree_payment_path(fine) %></td>
-                    <td>
-                    <%= form_with url: appeal_path(fine), method: :post do |form| %>
-                        <%= form.submit "Appeal" %>
-                    <% end %>
-                    </td>
-                <% end %>
 
-			</tr>
-            <tr>
-                <td>Location:</td>
-                <td><%=fine.location%></td>
-            </tr>
-            <tr>
-                <td>Date:</td>
-                <td><%=fine.date%></td>
-            </tr>
-            <tr>
-                <td>Time:</td>
-                <td><%=fine.time%></td>
-            </tr>
-            <tr>
-                <td>Offence:</td>
-                <td><%=fine.offence%></td>
-            </tr>
-            <tr>
-                <td>Fine:</td>
-                <td>RM <%=fine.amount%></td>
-            </tr>
-            <tr>
-                <td>Status:</td>
-                <td><%=fine.status.capitalize%></td>
-            </tr>
-            </table>
-        <hr/>
-		<%end%>
-	
+	<div class= "card-deck d-flex">
+		<% @fines.each do |fine| %>
+            <div class="d-inline-block">
+                <div class="card border-dark mb-4 mr-2" style="width: 13rem; text-align:left">
+                    <div class="card-body">
+                        <h5 class="card-title">Car No: <%= fine.complaint.number_plate %></h5>
+                        <h5 class="card-title">Date: <%= fine.complaint.created_at.strftime("%d/%m/%Y")%></h5>
+                        <h5 class="card-title">Time: <%= fine.complaint.created_at.strftime("%H:%M:%S") %></h5>
+                        <h5 class="card-title">Fine: RM <%= fine.complaint.fine_amount %></h5>
+                        <h5 class="card-title">Status: <%= fine.status.capitalize %></h5>
+                        <div style="text-align:center">
+                            <%=link_to 'View', show_fine_path(fine), class: "align-links" %>
+                            <% if fine.status == 'unpaid' %>
+                                <td><%=link_to 'Make Payment', new_braintree_payment_path(fine) %></td>
+                                <td>
+                                <%= form_with url: appeal_path(fine), method: :post do |form| %>
+                                    <%= form.submit "Appeal" %>
+                                <% end %>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+		<% end %>
+	</div>
 </div>
+
+
