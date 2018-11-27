@@ -8,14 +8,16 @@
     </tr>
 </thead>
 <tbody>
-    <% @complaints.each do |list| %>
-        <tr>
-        <th scope="row"><%= list.id %></th>
-        <td><%= list.number_plate %></td>
-        <td><%= list.offence %></td>
-        <td><%= list.user_id %></td>
-        <td> <%= link_to t("#{list.status}"), show_complaint_path(list) %></td>
-        </tr>
+    <% if @complaints != nil %>
+        <% @complaints.each do |list| %>
+            <tr>
+            <th scope="row"><%= list.id %></th>
+            <td><%= list.number_plate %></td>
+            <td><%= list.offence %></td>
+            <td><%= list.user_id %></td>
+            <td> <%= link_to t("#{list.status}"), show_complaint_path(list) %></td>
+            </tr>
+        <% end %>
     <% end %>
 </tbody>
 

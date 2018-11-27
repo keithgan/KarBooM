@@ -13,9 +13,9 @@ class OfficersController < ApplicationController
     # Officer Profile Page
     def show
         @officer = Officer.find(params[:id])
-        @complaints = Complaint.where(status: "0")
-        @appeals = Fine.where(status: "2")
-        @fines = Fine.all
+        @complaints = Complaint.where(status:"0", postal_code: current_officer.officer_locality)
+        @appeals = Fine.where(status: "2", officer_id: current_officer.id)
+        @fines = Fine.where(officer_id: current_officer.id)
     end
     # Officer Request for Change from Super Admin Page
     def edit
@@ -28,17 +28,17 @@ class OfficersController < ApplicationController
     end
 
     def complaints_tab
-		@complaints = Complaint.where(status: "0")
+		@complaints = Complaint.where(status:"0", postal_code: current_officer.officer_locality)
 		render partial: '/officers/complaints_tab'
 	end
 
 	def appeals_tab
-		@appeals = Fine.where(status: "2")
+		@appeals = Fine.where(status: "2", officer_id: current_officer.id)
 		render partial: '/officers/appeals_tab'
     end
 
     def fines_tab
-		@fines = Fine.all
+		@fines = Fine.where(officer_id: current_officer.id)
 		render partial: '/officers/fines_tab'
 	end
 
