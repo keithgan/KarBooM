@@ -1,7 +1,11 @@
-<h1> Home </h1>
+<body class="welcome-page-background">
 
-<%= link_to "Edit Officers", edit_officer_registration_path %>
-<%= link_to "List Officers", officers_path %>
-<%= link_to "Create Officer", new_officer_registration_path %>
-<%= link_to "Sign In", new_officer_session_path %>
-<%= link_to "Sign Out", destroy_officer_session_path, method: :delete %>
+	<div>
+	<h1> Welcome </h1>
+	</div>
+
+	<div class="align-center check-num-button">
+	<%=link_to 'Look up Plate', welcome_check_path%>
+	</div>
+
+</body>

@@ -1,0 +1,28 @@
+<div class="container">
+<h2>Your Complaint History</h2>
+<hr/>
+
+<div style="overflow-x:auto">
+	<%@complaints.each_with_index do |c,i|%>
+	<%if c.user_id == current_user.id%>
+
+		<table style="width:100%" class="width-check-num">
+		<tr>
+			<td>Number Plate: </td>
+			<td><%=c.number_plate%></td>
+		</tr>
+		<tr>
+			
+			<td><%=c.created_at%></td>
+			<td><%=link_to 'View', complaint_path(c) %></td>
+		</tr>
+		
+		</table>
+		<hr/>
+	<%end%>
+	<%end%>
+</div>
+		
+</div>
+
+

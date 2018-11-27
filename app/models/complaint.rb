@@ -1,4 +1,5 @@
 class Complaint < ApplicationRecord
+	
 	mount_uploader :avatar, AvatarUploader
 	belongs_to :user
 	has_one :fine
