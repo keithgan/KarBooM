@@ -6,8 +6,8 @@ class Fine < ApplicationRecord
 
     def self.create_from_complaint(complaint, officer)
         fine = Fine.new
-        fine.date = Time.now.strftime("%d/%m/%Y")
-        fine.time = Time.now.strftime("%H:%M:%S")
+        fine.date = complaint.created_at.strftime("%d/%m/%Y")
+        fine.time = complaint.created_at.strftime("%H:%M:%S")
         fine.location = complaint.address 
         fine.offence = complaint.offence 
         fine.amount = complaint.fine_amount

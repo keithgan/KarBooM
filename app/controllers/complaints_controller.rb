@@ -18,7 +18,6 @@ class ComplaintsController < ApplicationController
 
 	def create
 		complaint= current_user.complaints.new(get_params)
-		byebug
 
 		# Checks offence and assign fine
 		if (get_params[:offence] == "1") 

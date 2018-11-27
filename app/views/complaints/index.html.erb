@@ -2,43 +2,20 @@
 	<h1>Complaint History</h1>
 	<hr/>
 
-		<%@complaints.each_with_index do |c,i|%>
-			<table style="width:100%">
-			<tr>
-				<td>Coordinates: </td>
-				<td><%=c.latitude%>,<%=c.longitude%></td>
-				<td><%=link_to 'View', show_complaint_path(c) %></td>
-			</tr>
-			<tr>
-				<td>Address:</td>
-				<td><%=c.address%></td>
-			</tr>
-			<tr>
-				<td>Number Plate: </td>
-				<td><%=c.number_plate%></td>
-				<td><%=c.id%></td>
-			</tr>
-			<tr>
-				<td>Offence:</td>
-				<td><%=c.offence%></td>
-			</tr>
-			<tr>
-				<td>Fine:</td>
-				<td>RM <%=c.fine_amount%></td>
-			</tr>		
-			<tr>
-				<td>Comment:</td>
-				<td><%=c.comment%></td>
-			</tr>
-			<tr>
-				<td>Image Proof:</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><%=image_tag c.avatar.url, class: "responsive"%></td>
-			</tr>
-			</table>
-		<%end%>
-		<hr/>
-	
+		<div class= "card-deck d-flex justify-content-between">
+			<% @complaints.each_with_index do |c, i| %>
+				<!-- div class = "d-inline-block"--> 
+				<div class="row">
+					<div class="card border-dark mb-4 mr-2" style="width: 30rem; text-align:left">
+							<div class="card-body">
+								<h5 class="card-title">Car No: <%= c.number_plate %></h5>
+								<h5 class="card-title">Location: <%= c.address %></h5>
+								<h5 class="card-title">Offence: <%= c.offence %></h5>
+								<h5 class="card-title">Fine: RM <%= c.fine_amount %></h5>
+							</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	<hr/>
 </div>
