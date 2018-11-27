@@ -83,6 +83,9 @@ gem 'multipart-post'
 
 gem 'ocr_space'
 
-
 # Figaro 
 gem "figaro"
+
+# AWS
+gem 'carrierwave-aws'
+gem 'aws-sdk-rails'

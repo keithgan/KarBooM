@@ -1,24 +1,27 @@
-<div class="container">
-    <div class="row">
-        <div class="col-sm-4">
-            <h1> Hello <%=@user.full_name%> .</h1> 
+<body class="user-background">
 
-            <div class="card border-dark mb-3" style="width: 20rem;">
-                <div class="card-body">
-                    <h5 class="card-title"><%= " #{@user.full_name} "%></h5>
-                    <h5 class="card-title">Email: <%= @user.email %></h5>
-                    <h5 class="card-title">Gender: <%= @user.gender %></h5>
-                    <h5 class="card-title">IC: <%= @user.ic_number %></h5>
-                    <h5 class="card-title">Driving license: <%= @user.driving_license %></h5>
-                    <h5 class="card-title">Number plate: <%= @user.number_plate %></h5>
+<div class= "container user-div padding-10">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <h1 class="text-shadow"> Hello <%=@user.full_name%> .</h1> 
 
-                    <% if @user.id = current_user.id %>
-                        <%= link_to 'Edit details', edit_user_registration_path %>
-                    <% end %>
+                <div class="card border-dark mb-3 box-shadow" style="width: 20rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Email: <%= @user.email %></h5>
+                        <h5 class="card-title">Gender: <%= @user.gender %></h5>
+                        <h5 class="card-title">IC: <%= @user.ic_number %></h5>
+                        <h5 class="card-title">Driving license: <%= @user.driving_license %></h5>
+                        <h5 class="card-title">Number plate: <%= @user.number_plate %></h5>
+
+                        <% if @user.id = current_user.id %>
+                            <%= link_to 'Edit details', edit_user_registration_path %>
+                        <% end %>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-
+</body>
