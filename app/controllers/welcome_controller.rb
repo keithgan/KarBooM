@@ -12,7 +12,7 @@ skip_before_action :verify_authenticity_token, :only => [:numplate,:check]
 
   def numplate
   	@users = User.all
-
+  	byebug
   	file_upload=get_params[:avatar].tempfile
   	# change image to base64 filet type with format  "data:image/jpeg;base64,#{@image}"
   	shit =  Base64.strict_encode64(file_upload.read)
