@@ -8,37 +8,15 @@
 
 		<table style="width:100%" class="width-check-num">
 		<tr>
-			<td>Coordinates: </td>
-			<td><%=c.latitude%>,<%=c.longitude%></td>
-			<td><%=link_to 'View', complaint_path(c) %></td>
-		</tr>
-		<tr>
-			<td>Address:</td>
-			<td><%=c.address%></td>
-		</tr>
-		<tr>
 			<td>Number Plate: </td>
 			<td><%=c.number_plate%></td>
 		</tr>
 		<tr>
-			<td>Offence:</td>
-			<td><%=c.offence%></td>
+			
+			<td><%=c.created_at%></td>
+			<td><%=link_to 'View', complaint_path(c) %></td>
 		</tr>
-		<tr>
-			<td>Fine:</td>
-			<td>RM <%=c.fine%></td>
-		</tr>		
-		<tr>
-			<td>Comment:</td>
-			<td><%=c.comment%></td>
-		</tr>
-		<tr>
-			<td>Image Proof:</td>
-		</tr>
-		<tr>
-			<td></td>
-			<td><%=image_tag c.avatar.url,  width: "500"%></td>
-		</tr>
+		
 		</table>
 		<hr/>
 	<%end%>
