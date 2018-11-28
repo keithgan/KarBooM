@@ -101,8 +101,12 @@
   </div>
 </nav>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+<!--   <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p> -->
+  <!-- THIS IS FOR FLASHING -->
+        <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
   
   <div class="container mt-2 mb-5">
     <%= yield %>
