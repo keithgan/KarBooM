@@ -13,13 +13,13 @@
                         <h5 class="card-title">Fine: RM <%= fine.complaint.fine_amount %></h5>
                         <h5 class="card-title">Status: <%= fine.status.capitalize %></h5>
                         <div style="text-align:center">
-                            <%=link_to 'View', show_fine_path(fine), class: "align-links" %>
+                            <%=link_to 'View', show_fine_path(fine), class: "align-links" %><br/>
                             <% if fine.status == 'Unpaid' %>
                                 <td><%=link_to 'Make Payment', new_braintree_payment_path(fine) %></td>
                                 <td>
-                                <%= form_with url: appeal_path(fine), method: :post do |form| %>
-                                    <%= form.submit "Appeal" %>
-                                <% end %>
+                                <%#= form_with url: appeal_path(fine), method: :post do |form| %>
+                                    <%#= form.submit "Appeal" %>
+                                <%# end %>
                             <% end %>
                         </div>
                     </div>

@@ -5,6 +5,13 @@
 		<tr>
 			<td><strong>Number Plate:</strong></td>
 			<td><%=@fine.complaint.number_plate%></td>
+            <% if @fine.status == 'Unpaid' %>
+            <td><%=link_to 'Make Payment', new_braintree_payment_path(@fine) %></td>
+            <td>
+            <%#= form_with url: appeal_path(fine), method: :post do |form| %>
+                <%#= form.submit "Appeal" %>
+            <%# end %>
+        	<% end %>
 		</tr>
 		<tr>
 			<td><strong>Location:</strong></td>
