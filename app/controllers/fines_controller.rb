@@ -12,6 +12,7 @@ class FinesController < ApplicationController
         @complaint = Complaint.find(params[:complaint_id])
         @fine = Fine.create_from_complaint(@complaint, current_officer)
         if @fine.save
+            @complaint.status = 1
             redirect_to officer_path(current_officer)
         else
             redirect_to complaint_path(@complaint.id)
