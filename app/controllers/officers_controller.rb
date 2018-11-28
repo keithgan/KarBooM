@@ -16,6 +16,7 @@ class OfficersController < ApplicationController
         @complaints = Complaint.where(status:"0", postal_code: current_officer.officer_locality)
         @appeals = Fine.where(status: "2", officer_id: current_officer.id)
         @fines = Fine.where(officer_id: current_officer.id)
+        render :layout => false
     end
     # Officer Request for Change from Super Admin Page
     def edit
