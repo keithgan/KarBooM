@@ -3,7 +3,7 @@
   <div class="d-flex justify-content-center h-100">
     <div class="card">
       <div class="card-header">
-        <h3>Sign In</h3>
+        <h3 class="text-dark">Sign In</h3>
       </div>
       <div class="card-body">
 
@@ -23,7 +23,7 @@
            <%= f.password_field :password, autocomplete: "current-password", :class=>"form-control", placeholder:"Password" %>
           </div>
 
-          <div class="row align-items-center remember">
+          <div class="row align-items-center remember text-muted">
             <% if devise_mapping.rememberable? -%>
               <div class="field">
               <%= f.check_box :remember_me %>
