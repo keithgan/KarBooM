@@ -227,20 +227,20 @@
                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
-                            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
                                 <div class="carousel-inner" id="officer-master-carousel">
                                     <% @complaints.each_with_index do |list, index| %>
                                         <%= render partial: 'officers/carousel_item', locals: {list: list, index: index} %>
                                     <% end %>
                                 </div>
-                                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                <!--<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="sr-only">Previous</span>
                                 </a>
                                 <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="sr-only">Next</span>
-                                </a>
+                                </a>-->
                             </div>
                             <!-- <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
