@@ -17,11 +17,11 @@ class BraintreeController < ApplicationController
      )
   
     if result.success?
-      redirect_to :root, :flash => { :success => "Transaction successful!" }
+      redirect_to all_fines_path, :flash => { :success => "Transaction successful!" }
       @fine.status = 1
       @fine.save
     else
-      redirect_to :root, :flash => { :error => "Transaction failed. Please try again." }
+      redirect_to all_fines_path, :flash => { :error => "Transaction failed. Please try again." }
     end
   end
 end
