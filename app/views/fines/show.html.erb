@@ -25,6 +25,10 @@
 		<tr>
 			<td><strong>Fine:</strong></td>
 			<td><%=@fine.amount%></td>
+		</tr>
+		<tr>
+			<td><strong>Comment:</strong></td>
+			<td><%=@fine.complaint.comment%></td>
 		</tr>		
 		<tr>
 			<td><strong>Given by:</strong></td>
@@ -33,9 +37,6 @@
 
 		<tr>
 			<td><strong>Image Proof:</strong></td>
-		</tr>
-		<tr>
-			<td></td>
 			<td><%=image_tag @fine.complaint.avatar.url , class: "responsive"%></td>
 		</tr>
 		<tr>
@@ -43,4 +44,12 @@
 			<td><%=@fine.status.capitalize%></td>
 		</tr>
 		</table>
+		<% if @fine.status == 'Unpaid' %>
+		<div class="align-center padding-10">
+        <%=link_to 'Make Payment', new_braintree_payment_path(@fine),class:"btn btn-primary"%>
+   		 </div>
+        <%#= form_with url: appeal_path(fine), method: :post do |form| %>
+            <%#= form.submit "Appeal" %>
+        <%# end %>
+    	<% end %>
 </div>
